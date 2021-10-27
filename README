@@ -1,0 +1,13 @@
+# TDD The Right Way
+
+### Project Installation
+After downloading the project's code, run:
+- composer install
+
+### Workshop Requirements
+- PHP 7.4 o greater
+- Environment ready to run a traditional Symfony app
+- DB?
+
+Nice to have:
+- Ability to run tests through your IDE
