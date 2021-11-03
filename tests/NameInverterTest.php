@@ -31,6 +31,11 @@ class NameInverterTest extends TestCase
         $this->assertInvertedName('Diego', 'Diego');
     }
 
+    public function testInvert_givenSimpleNameWithSpaces_returnNameWithoutSpaces()
+    {
+        $this->assertInvertedName('  Diego  ', 'Diego');
+    }
+
     private function assertInvertedName(string $name, string $invertedName): void
     {
         self::assertEquals($invertedName, $this->nameInverter->invert($name));

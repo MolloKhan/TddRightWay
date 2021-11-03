@@ -11,6 +11,6 @@ class NameInverter
         }
 
         // fake it till you make it
-        return $name;
+        return trim($name);
     }
 }
