@@ -10,7 +10,11 @@ class NameInverter
             return '';
         }
 
-        // fake it till you make it
-        return trim($name);
+        $nameParts = explode(' ', trim($name));
+        if (count($nameParts) === 1) {
+            return $nameParts[0];
+        }
+
+        return sprintf('%s, %s', $nameParts[1], $nameParts[0]);
     }
 }
