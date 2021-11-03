@@ -4,7 +4,17 @@
             "id": "start",
             "name": "start",
             "description": null
+        },
+        {
+            "id": "nameinverter-start",
+            "name": "NameInverter: start",
+            "description": null
+        },
+        {
+            "id": "nameinverter-simple-name",
+            "name": "NameInverter: simple name",
+            "description": null
         }
     ],
-    "sha": "f2a51a3c0d4ede4f836828d91554f94420aaed31"
+    "sha": "3ed25039010adb2a970c7964b5a514b5f01be4d5"
 }
