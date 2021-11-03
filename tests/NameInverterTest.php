@@ -9,14 +9,17 @@ class NameInverterTest extends TestCase
 {
     public function testInvert_givenNull_returnEmptyString()
     {
+        // Arrange
         $name = null;
 
+        // Act
         $nameInverter = new NameInverter();
         $invertedName = $nameInverter->invert($name);
 
+        // Assert
         self::assertEquals('', $invertedName);
     }
-    
+
     public function testInvert_givenSimpleName_returnName()
     {
         $name = 'Diego';
