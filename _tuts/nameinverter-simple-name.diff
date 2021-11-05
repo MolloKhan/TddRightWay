@@ -16,15 +16,14 @@ index c68fd42..f7cd091 100644
      }
  }
 diff --git a/tests/NameInverterTest.php b/tests/NameInverterTest.php
-index 6512056..c07dca0 100644
+index f74cf8b..32037f8 100644
 --- a/tests/NameInverterTest.php
 +++ b/tests/NameInverterTest.php
-@@ -16,6 +16,14 @@ class NameInverterTest extends TestCase
- 
+@@ -19,4 +19,14 @@ class NameInverterTest extends TestCase
+         // Assert
          self::assertEquals('', $invertedName);
      }
--
-     
++
 +    public function testInvert_givenSimpleName_returnName()
 +    {
 +        $name = 'Diego';
