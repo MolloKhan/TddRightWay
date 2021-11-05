@@ -14,7 +14,27 @@
             "id": "nameinverter-simple-name",
             "name": "NameInverter: simple name",
             "description": null
+        },
+        {
+            "id": "nameinverter-simple-name-refactoring",
+            "name": "NameInverter: Simple Name Refactoring",
+            "description": null
+        },
+        {
+            "id": "nameinverter-simple-name-with-spaces",
+            "name": "NameInverter: Simple Name With Spaces",
+            "description": null
+        },
+        {
+            "id": "nameinverter-full-name",
+            "name": "NameInverter: Full name",
+            "description": null
+        },
+        {
+            "id": "nameinverter-fullname-with-multiple-spaces",
+            "name": "NameInverter: Fullname with multiple spaces",
+            "description": null
         }
     ],
-    "sha": "3ed25039010adb2a970c7964b5a514b5f01be4d5"
+    "sha": "40e6ab43643389b0bdc84eccf1bf646e5a652286"
 }
