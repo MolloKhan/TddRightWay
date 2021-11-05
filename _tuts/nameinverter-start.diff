@@ -18,10 +18,10 @@ index 0000000..c68fd42
 +}
 diff --git a/tests/NameInverterTest.php b/tests/NameInverterTest.php
 new file mode 100644
-index 0000000..6512056
+index 0000000..f74cf8b
 --- /dev/null
 +++ b/tests/NameInverterTest.php
-@@ -0,0 +1,21 @@
+@@ -0,0 +1,22 @@
 +<?php
 +
 +namespace App\Tests;
@@ -33,13 +33,14 @@ index 0000000..6512056
 +{
 +    public function testInvert_givenNull_returnEmptyString()
 +    {
++        // Arrange
 +        $name = null;
 +
++        // Act
 +        $nameInverter = new NameInverter();
 +        $invertedName = $nameInverter->invert($name);
 +
++        // Assert
 +        self::assertEquals('', $invertedName);
 +    }
-+
-+    
 +}
