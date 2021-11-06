@@ -20,10 +20,7 @@ class NameInverter
             return $nameParts[0];
         }
 
-        $postNominals = '';
-        if (count($nameParts) > 2) {
-            $postNominals = $nameParts[2];
-        }
+        $postNominals = $this->getPostNominals($nameParts);
 
         return trim(sprintf('%s, %s %s', $nameParts[1], $nameParts[0], $postNominals));
     }
@@ -31,5 +28,12 @@ class NameInverter
     private function isHonorific(string $word): bool
     {
         return preg_match('/mr|mrs|ms/', str_replace('.', '', strtolower($word)));
+    }
+
+    private function getPostNominals(array $nameParts): string
+    {
+        $postNominals = array_slice($nameParts, 2);
+
+        return implode(' ', $postNominals);
     }
 }
