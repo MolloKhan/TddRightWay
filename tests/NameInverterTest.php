@@ -49,6 +49,9 @@ class NameInverterTest extends TestCase
     public function testInvert_ignoreHonorifics()
     {
         $this->assertInvertedName('Mr. Diego Aguiar', 'Aguiar, Diego');
+        $this->assertInvertedName('Mrs. Diego Aguiar', 'Aguiar, Diego');
+        $this->assertInvertedName('Ms. Diego Aguiar', 'Aguiar, Diego');
+        $this->assertInvertedName('mr Diego Aguiar', 'Aguiar, Diego');
     }
 
     private function assertInvertedName(string $name, string $invertedName): void
