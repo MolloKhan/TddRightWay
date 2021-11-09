@@ -34,7 +34,37 @@
             "id": "nameinverter-fullname-with-multiple-spaces",
             "name": "NameInverter: Fullname with multiple spaces",
             "description": null
+        },
+        {
+            "id": "nameinverter-honorifics",
+            "name": "NameInverter: Honorifics",
+            "description": null
+        },
+        {
+            "id": "nameinverter-refactor-honorifics",
+            "name": "NameInverter: refactor honorifics",
+            "description": null
+        },
+        {
+            "id": "nameinverter-more-honorifics",
+            "name": "NameInverter: more honorifics",
+            "description": null
+        },
+        {
+            "id": "nameinverter-post-nominals",
+            "name": "NameInverter: Post Nominals",
+            "description": null
+        },
+        {
+            "id": "nameinverter-post-nominals-triangulation",
+            "name": "NameInverter: Post Nominals Triangulation",
+            "description": null
+        },
+        {
+            "id": "nameinverter-integration-test",
+            "name": "NameInverter: integration test",
+            "description": null
         }
     ],
-    "sha": "40e6ab43643389b0bdc84eccf1bf646e5a652286"
+    "sha": "1bc899dd5bc8703b079dc8a164c7698398eb4afd"
 }
