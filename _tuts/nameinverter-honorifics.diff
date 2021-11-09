@@ -1,0 +1,33 @@
+diff --git a/src/NameInverter.php b/src/NameInverter.php
+index f801055..8558684 100644
+--- a/src/NameInverter.php
++++ b/src/NameInverter.php
+@@ -11,6 +11,10 @@ class NameInverter
+         }
+ 
+         $nameParts = preg_split('/\s+/', trim($name));
++        if (count($nameParts) > 1 && $nameParts[0] === 'Mr.') {
++            array_shift($nameParts);
++        }
++        
+         if (count($nameParts) === 1) {
+             return $nameParts[0];
+         }
+diff --git a/tests/NameInverterTest.php b/tests/NameInverterTest.php
+index 60d65c7..0c9f39f 100644
+--- a/tests/NameInverterTest.php
++++ b/tests/NameInverterTest.php
+@@ -45,7 +45,12 @@ class NameInverterTest extends TestCase
+     {
+         $this->assertInvertedName('  Diego  Aguiar  ', 'Aguiar, Diego');
+     }
+-    
++
++    public function testInvert_ignoreHonorifics()
++    {
++        $this->assertInvertedName('Mr. Diego Aguiar', 'Aguiar, Diego');
++    }
++
+     private function assertInvertedName(string $name, string $invertedName): void
+     {
+         self::assertEquals($invertedName, $this->nameInverter->invert($name));
