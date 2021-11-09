@@ -17,4 +17,18 @@ class BowlingGameTest extends TestCase
 
         self::assertEquals(0, $game->score());
     }
+
+    /**
+     * "Triangulation" Technique
+     */
+    public function testAllOnes()
+    {
+        $game = new BowlingGame();
+
+        for ($i = 0; $i < 20; $i++) {
+            $game->roll(1);
+        }
+
+        self::assertEquals(20, $game->score());
+    }
 }
