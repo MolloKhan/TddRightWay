@@ -64,7 +64,52 @@
             "id": "nameinverter-integration-test",
             "name": "NameInverter: integration test",
             "description": null
+        },
+        {
+            "id": "bowlingkata-start",
+            "name": "BowlingKata: Start",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-gutter-gamer-test",
+            "name": "BowlingKata: Gutter Gamer Test",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-all-ones",
+            "name": "BowlingKata: All ones\"",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-all-ones-refactoring",
+            "name": "BowlingKata: All ones refactoring",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-spare-test",
+            "name": "BowlingKata: one spare test",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-spare-refactoring",
+            "name": "BowlingKata: one-spare-refactoring",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-strike",
+            "name": "BowlingKata: One Strike",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-strike-refactoring",
+            "name": "BowlingKata: one strike refactoring",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-perfect-game",
+            "name": "BowlingKata: perfect game",
+            "description": null
         }
     ],
-    "sha": "1bc899dd5bc8703b079dc8a164c7698398eb4afd"
+    "sha": "8af6afe32dc7b1b4a985f03f0a4a2acf91dcd690"
 }
