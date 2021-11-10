@@ -1,0 +1,59 @@
+diff --git a/src/BowlingGame.php b/src/BowlingGame.php
+index fdd9dfc..ef5541c 100644
+--- a/src/BowlingGame.php
++++ b/src/BowlingGame.php
+@@ -4,16 +4,29 @@ namespace App;
+ 
+ class BowlingGame
+ {
+-    private int $score = 0;
++    private array $rolls = [];
++    private int $currentRoll = 0;
+ 
+     public function roll(int $pins)
+     {
+-        $this->score += $pins;
++        $this->rolls[$this->currentRoll++] = $pins;
+     }
+ 
+     public function score(): int
+     {
+-        // "fake it till you make it" technique
+-        return $this->score;
++        $score = 0;
++        $frameIndex = 0;
++        for ($frame = 0; $frame < 10; $frame++) {
++            // spare
++            if ($this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] === 10) {
++                $score += 10 + $this->rolls[$frameIndex + 2];
++            } else {
++                $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
++            }
++
++            $frameIndex += 2;
++        }
++
++        return $score;
+     }
+ }
+diff --git a/tests/BowlingGameTest.php b/tests/BowlingGameTest.php
+index 30f7abf..8ddb09b 100644
+--- a/tests/BowlingGameTest.php
++++ b/tests/BowlingGameTest.php
+@@ -31,6 +31,16 @@ class BowlingGameTest extends TestCase
+         self::assertEquals(20, $this->game->score());
+     }
+ 
++    public function testOneSpare()
++    {
++        $this->game->roll(5);
++        $this->game->roll(5); // spare
++        $this->game->roll(3);
++        $this->rollMany(17, 0);
++
++        self::assertEquals(16, $this->game->score());
++    }
++
+     private function rollMany(int $n, int $pins): void
+     {
+         for ($i = 0; $i < $n; $i++) {
