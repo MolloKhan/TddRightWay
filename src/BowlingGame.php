@@ -30,7 +30,7 @@ class BowlingGame
                 $score += 10 + $this->spareBonus($frameIndex);
                 $frameIndex += 2;
             } else {
-                $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
+                $score += $this->sumBallsInFrame($frameIndex);
                 $frameIndex += 2;
             }
         }
@@ -56,5 +56,10 @@ class BowlingGame
     private function spareBonus(int $frameIndex): int
     {
         return $this->rolls[$frameIndex + 2];
+    }
+
+    private function sumBallsInFrame(int $frameIndex): int
+    {
+        return $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
     }
 }
