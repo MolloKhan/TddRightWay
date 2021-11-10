@@ -1,0 +1,46 @@
+diff --git a/src/BowlingGame.php b/src/BowlingGame.php
+index 2e891a9..fdd9dfc 100644
+--- a/src/BowlingGame.php
++++ b/src/BowlingGame.php
+@@ -4,13 +4,16 @@ namespace App;
+ 
+ class BowlingGame
+ {
+-    public function roll(int $int)
++    private int $score = 0;
++
++    public function roll(int $pins)
+     {
++        $this->score += $pins;
+     }
+ 
+     public function score(): int
+     {
+         // "fake it till you make it" technique
+-        return 0;
++        return $this->score;
+     }
+ }
+diff --git a/tests/BowlingGameTest.php b/tests/BowlingGameTest.php
+index ea7a867..5aeeb8e 100644
+--- a/tests/BowlingGameTest.php
++++ b/tests/BowlingGameTest.php
+@@ -17,4 +17,18 @@ class BowlingGameTest extends TestCase
+ 
+         self::assertEquals(0, $game->score());
+     }
++
++    /**
++     * "Triangulation" Technique
++     */
++    public function testAllOnes()
++    {
++        $game = new BowlingGame();
++
++        for ($i = 0; $i < 20; $i++) {
++            $game->roll(1);
++        }
++
++        self::assertEquals(20, $game->score());
++    }
+ }
