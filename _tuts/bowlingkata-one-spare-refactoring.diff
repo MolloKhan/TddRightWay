@@ -1,0 +1,49 @@
+diff --git a/src/BowlingGame.php b/src/BowlingGame.php
+index ef5541c..18d9ea8 100644
+--- a/src/BowlingGame.php
++++ b/src/BowlingGame.php
+@@ -17,8 +17,7 @@ class BowlingGame
+         $score = 0;
+         $frameIndex = 0;
+         for ($frame = 0; $frame < 10; $frame++) {
+-            // spare
+-            if ($this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] === 10) {
++            if ($this->isSpare($frameIndex)) {
+                 $score += 10 + $this->rolls[$frameIndex + 2];
+             } else {
+                 $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
+@@ -29,4 +28,9 @@ class BowlingGame
+ 
+         return $score;
+     }
++
++    protected function isSpare(int $frameIndex): bool
++    {
++        return $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] === 10;
++    }
+ }
+diff --git a/tests/BowlingGameTest.php b/tests/BowlingGameTest.php
+index 8ddb09b..cfde460 100644
+--- a/tests/BowlingGameTest.php
++++ b/tests/BowlingGameTest.php
+@@ -33,8 +33,7 @@ class BowlingGameTest extends TestCase
+ 
+     public function testOneSpare()
+     {
+-        $this->game->roll(5);
+-        $this->game->roll(5); // spare
++        $this->rollSpare();
+         $this->game->roll(3);
+         $this->rollMany(17, 0);
+ 
+@@ -47,4 +46,10 @@ class BowlingGameTest extends TestCase
+             $this->game->roll($pins);
+         }
+     }
++
++    protected function rollSpare(): void
++    {
++        $this->game->roll(5);
++        $this->game->roll(5);
++    }
+ }
