@@ -3,11 +3,13 @@
 ### Project Installation
 After downloading the project's code, run:
 - composer install
+- php bin/console doctrine:database:create -e test
+- php bin/console doctrine:schema:create -e test
 
 ### Workshop Requirements
-- PHP 7.4 o greater
+- PHP 7.4 or greater
 - Environment ready to run a traditional Symfony app
-- DB?
+- Any database compatible with Doctrine
 
 Nice to have:
 - Ability to run tests through your IDE
