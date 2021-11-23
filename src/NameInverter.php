@@ -10,7 +10,7 @@ class NameInverter
             return '';
         }
 
-        $nameParts = explode(' ', trim($name));
+        $nameParts = preg_split('/\s+/', trim($name));
         if (count($nameParts) === 1) {
             return $nameParts[0];
         }
