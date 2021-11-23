@@ -20,7 +20,12 @@ class NameInverter
             return $nameParts[0];
         }
 
-        return sprintf('%s, %s', $nameParts[1], $nameParts[0]);
+        $postNominals = '';
+        if (count($nameParts) > 2) {
+            $postNominals = $nameParts[2];
+        }
+
+        return trim(sprintf('%s, %s %s', $nameParts[1], $nameParts[0], $postNominals));
     }
 
     private function isHonorific(string $word): bool
