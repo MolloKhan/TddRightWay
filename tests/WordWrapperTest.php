@@ -14,4 +14,12 @@ class WordWrapperTest extends TestCase
 
         self::assertEquals("word\nword", $result);
     }
+
+    public function testShouldNotWrap()
+    {
+        $wordWrapper = new WordWrapper();
+        $result = $wordWrapper->wrap('a word', 6);
+
+        self::assertEquals("a word", $result);
+    }
 }
