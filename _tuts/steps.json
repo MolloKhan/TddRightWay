@@ -71,6 +71,11 @@
             "description": null
         },
         {
+            "id": "nameinverter-data-providers",
+            "name": "NameInverter: data providers",
+            "description": null
+        },
+        {
             "id": "bowlingkata-gutter-gamer-test",
             "name": "BowlingKata: Gutter Gamer Test",
             "description": null
@@ -131,5 +136,5 @@
             "description": null
         }
     ],
-    "sha": "60d11971e69970a1f9460085e33269b658e55ae6"
+    "sha": "e113e253fecab2039a89b72024d961df411457d2"
 }
