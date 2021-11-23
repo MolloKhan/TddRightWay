@@ -9,9 +9,14 @@ class WordWrapperTest extends TestCase
 {
     public function testShouldWrap()
     {
-        $wordWrapper = new WordWrapper();
-        $result = $wordWrapper->wrap('', 1);
+        $this->assertWrap('', 1, '');
+    }
 
-        self::assertEquals('', $result);
+    private function assertWrap(string $s, int $width, string $expected)
+    {
+        $wordWrapper = new WordWrapper();
+        $result = $wordWrapper->wrap($s, $width);
+
+        self::assertEquals($expected, $result);
     }
 }
