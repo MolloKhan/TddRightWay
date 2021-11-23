@@ -71,6 +71,11 @@
             "description": null
         },
         {
+            "id": "nameinverter-data-providers",
+            "name": "NameInverter: data providers",
+            "description": null
+        },
+        {
             "id": "bowlingkata-gutter-gamer-test",
             "name": "BowlingKata: Gutter Gamer Test",
             "description": null
@@ -109,7 +114,27 @@
             "id": "bowlingkata-perfect-game",
             "name": "BowlingKata: perfect game",
             "description": null
+        },
+        {
+            "id": "wordwrap-wrong-start",
+            "name": "WordWrap: wrong-start",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-should-wrap",
+            "name": "WordWrap: wrong should wrap",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-should-not-wrap",
+            "name": "WordWrap: wrong should not wrap",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-break-line-across-word",
+            "name": "WordWrap: wrong break line across word",
+            "description": null
         }
     ],
-    "sha": "8af6afe32dc7b1b4a985f03f0a4a2acf91dcd690"
+    "sha": "60d11971e69970a1f9460085e33269b658e55ae6"
 }
