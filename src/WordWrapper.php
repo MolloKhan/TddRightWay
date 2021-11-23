@@ -14,6 +14,7 @@ class WordWrapper
             return $s;
         }
 
-        return substr($s, 0, $width) . "\n" . $this->wrap(substr($s, $width), $width);
+        // "x x"
+        return substr($s, 0, $width) . "\n" . $this->wrap(trim(substr($s, $width)), $width);
     }
 }
