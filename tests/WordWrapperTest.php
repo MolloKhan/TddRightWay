@@ -7,16 +7,20 @@ use PHPUnit\Framework\TestCase;
 
 class WordWrapperTest extends TestCase
 {
-    public function testShouldWrap()
-    {
-        $this->assertWrap('', 1, '');
-    }
-
-    private function assertWrap(string $s, int $width, string $expected)
+    /**
+     * @dataProvider shouldWrapProvider
+     */
+    public function testShouldWrap(string $s, int $width, string $expected)
     {
         $wordWrapper = new WordWrapper();
-        $result = $wordWrapper->wrap($s, $width);
 
-        self::assertEquals($expected, $result);
+        self::assertEquals($expected, $wordWrapper->wrap($s, $width));
+    }
+
+    public function shouldWrapProvider(): iterable
+    {
+        return [
+            'empty case' => ['', 1, ''],
+        ];
     }
 }
