@@ -40,18 +40,18 @@ class NameInverterTest extends TestCase
     {
         $this->assertInvertedName('Diego Aguiar', 'Aguiar, Diego');
     }
-    
+
     public function testInvert_givenFirstLastWithSpaces_returnLastFirstWithoutSpaces()
     {
         $this->assertInvertedName('  Diego  Aguiar  ', 'Aguiar, Diego');
     }
 
-    public function testInvert_ignoreHonorifics()
+    /**
+     * @dataProvider ignoreHonorificsProvider
+     */
+    public function testInvert_ignoreHonorifics($name, $expectedName)
     {
-        $this->assertInvertedName('Mr. Diego Aguiar', 'Aguiar, Diego');
-        $this->assertInvertedName('Mrs. Diego Aguiar', 'Aguiar, Diego');
-        $this->assertInvertedName('Ms. Diego Aguiar', 'Aguiar, Diego');
-        $this->assertInvertedName('mr Diego Aguiar', 'Aguiar, Diego');
+        $this->assertInvertedName($name, $expectedName);
     }
 
     public function testInvert_postNominals_stayAtEnd()
@@ -63,6 +63,18 @@ class NameInverterTest extends TestCase
     public function testInvert_integration()
     {
         $this->assertInvertedName('  Mr.   Diego   Aguiar  Bs.  Phd. III', 'Aguiar, Diego Bs. Phd. III');
+    }
+
+    public function ignoreHonorificsProvider(): iterable
+    {
+        return [
+            'Simple Honorific' => ['Mr. Diego Aguiar', 'Aguiar, Diego'],
+            ['Mrs. Diego Aguiar', 'Aguiar, Diego'],
+            ['Ms. Diego Aguiar', 'Aguiar, Diego'],
+            ['mr Diego Aguiar', 'Aguiar, Diego'],
+        ];
+
+//         yield 'Simple Honorific' => ['Mr. Diego Aguiar', 'Aguiar, Diego'];
     }
 
     private function assertInvertedName(string $name, string $invertedName): void
