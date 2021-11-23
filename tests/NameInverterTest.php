@@ -36,6 +36,11 @@ class NameInverterTest extends TestCase
         $this->assertInvertedName('  Diego  ', 'Diego');
     }
 
+    public function testInvert_givenFirstLast_returnLastFirst()
+    {
+        $this->assertInvertedName('Diego Aguiar', 'Aguiar, Diego');
+    }
+    
     private function assertInvertedName(string $name, string $invertedName): void
     {
         self::assertEquals($invertedName, $this->nameInverter->invert($name));
