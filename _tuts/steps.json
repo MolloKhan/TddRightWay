@@ -71,11 +71,6 @@
             "description": null
         },
         {
-            "id": "nameinverter-data-providers",
-            "name": "NameInverter: data providers",
-            "description": null
-        },
-        {
             "id": "bowlingkata-gutter-gamer-test",
             "name": "BowlingKata: Gutter Gamer Test",
             "description": null
