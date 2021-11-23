@@ -40,6 +40,16 @@ class BowlingGameTest extends TestCase
         self::assertEquals(16, $this->game->score());
     }
 
+    public function testOneStrike()
+    {
+        $this->game->roll(10); // strike
+        $this->game->roll(3);
+        $this->game->roll(4);
+        $this->rollMany(0, 16);
+
+        self::assertEquals(24, $this->game->score());
+    }
+
     private function rollMany(int $n, int $pins): void
     {
         for ($i = 0; $i < $n; $i++) {
