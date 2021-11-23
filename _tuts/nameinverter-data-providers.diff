@@ -1,25 +1,3 @@
-diff --git a/_tuts/steps.json b/_tuts/steps.json
-index 30a235c..c05fbf6 100644
---- a/_tuts/steps.json
-+++ b/_tuts/steps.json
-@@ -66,13 +66,13 @@
-             "description": null
-         },
-         {
--            "id": "bowlingkata-start",
--            "name": "BowlingKata: Start",
-+            "id": "nameinverter-data-providers",
-+            "name": "NameInverter: data providers",
-             "description": null
-         },
-         {
--            "id": "nameinverter-data-providers",
--            "name": "NameInverter: data providers",
-+            "id": "bowlingkata-start",
-+            "name": "BowlingKata: Start",
-             "description": null
-         },
-         {
 diff --git a/tests/NameInverterTest.php b/tests/NameInverterTest.php
 index 635cb17..c6cb976 100644
 --- a/tests/NameInverterTest.php
