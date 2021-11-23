@@ -25,6 +25,6 @@ class NameInverter
 
     private function isHonorific(string $word): bool
     {
-        return $word === 'Mr.';
+        return preg_match('/mr|mrs|ms/', str_replace('.', '', strtolower($word)));
     }
 }
