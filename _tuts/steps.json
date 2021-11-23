@@ -134,7 +134,52 @@
             "id": "wordwrap-wrong-break-line-across-word",
             "name": "WordWrap: wrong break line across word",
             "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-reset",
+            "name": "WordWrap: should wrap reset",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-set-up",
+            "name": "WordWrap: should wrap set up",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-basic-tests",
+            "name": "WordWrap: should wrap basic tests",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-break-word",
+            "name": "WordWrap: should wrap break word",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-multi-break-lines",
+            "name": "WordWrap: should wrap multi break lines",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-space-after-breakline",
+            "name": "WordWrap: should wrap space after breakline ",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-width-include-space",
+            "name": "WordWrap: should wrap width include space",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-width-includes-a-space-following-by-another-word",
+            "name": "WordWrap: should wrap width includes a space following by another word",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-integration",
+            "name": "WordWrap: should wrap integration",
+            "description": null
         }
     ],
-    "sha": "383df6bfa8147da5a3b1a00ffc07ee3a5a622e24"
+    "sha": "b4be59f1198c69267a835f1f6675e9a7941a223b"
 }
