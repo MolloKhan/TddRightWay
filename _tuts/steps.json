@@ -66,13 +66,13 @@
             "description": null
         },
         {
-            "id": "bowlingkata-start",
-            "name": "BowlingKata: Start",
+            "id": "nameinverter-data-providers",
+            "name": "NameInverter: data providers",
             "description": null
         },
         {
-            "id": "nameinverter-data-providers",
-            "name": "NameInverter: data providers",
+            "id": "bowlingkata-start",
+            "name": "BowlingKata: Start",
             "description": null
         },
         {
@@ -136,5 +136,5 @@
             "description": null
         }
     ],
-    "sha": "e113e253fecab2039a89b72024d961df411457d2"
+    "sha": "383df6bfa8147da5a3b1a00ffc07ee3a5a622e24"
 }
