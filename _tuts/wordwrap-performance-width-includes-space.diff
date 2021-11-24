@@ -1,0 +1,94 @@
+diff --git a/src/WordWrapper.php b/src/WordWrapper.php
+index 16b03e2..85258bf 100644
+--- a/src/WordWrapper.php
++++ b/src/WordWrapper.php
+@@ -4,6 +4,8 @@ namespace App;
+ 
+ class WordWrapper
+ {
++    private $breakPoint = false;
++
+     public function wrap(string $s, int $width): string
+     {
+         $r = '';
+@@ -11,7 +13,7 @@ class WordWrapper
+ 
+         do {
+             $r .= $this->cut($newString, $width);
+-            $tail = trim(substr($newString, $width));
++            $tail = trim(substr($newString, $this->breakPoint));
+             if ($tail) {
+                 $r .= "\n";
+             }
+@@ -24,19 +26,8 @@ class WordWrapper
+ 
+     private function cut(string $s, int $width): string
+     {
+-        if (!$s) {
+-            return '';
+-        }
++        $this->breakPoint = $width;
+ 
+-        if (strlen($s) <= $width) {
+-            return $s;
+-        }
+-
+-        return substr($s, 0, $width);
+-    }
+-
+-    public function wrapOld(string $s, int $width): string
+-    {
+         if (!$s) {
+             return '';
+         }
+@@ -45,11 +36,11 @@ class WordWrapper
+             return $s;
+         }
+ 
+-        $breakPoint = strrpos(substr($s, 0, $width), ' ');
+-        if ($breakPoint === false) {
+-            $breakPoint = $width;
++        $this->breakPoint = strrpos(substr($s, 0, $width), ' ');
++        if ($this->breakPoint === false) {
++            $this->breakPoint = $width;
+         }
+ 
+-        return substr($s, 0, $width) . "\n" . substr($s, $width);
++        return substr($s, 0, $this->breakPoint);
+     }
+ }
+diff --git a/tests/WordWrapperTest.php b/tests/WordWrapperTest.php
+index f0ccd37..bd10f2d 100644
+--- a/tests/WordWrapperTest.php
++++ b/tests/WordWrapperTest.php
+@@ -25,18 +25,18 @@ class WordWrapperTest extends TestCase
+             'break word' => ['xx', 1, "x\nx"],
+             'one word multiple break lines' => ['xxx', 1, "x\nx\nx"],
+             'space after break line' => ['x x', 1, "x\nx"],
+-//            'width includes a space' => ['x xx', 3, "x\nxx"],
+-//            'width includes a space following by another word' => ['x xx x', 3, "x\nxx\nx"],
+-//            'integration' => [
+-//                'Welcome everybody to Symfony2021 this TDD workshop it\'s gonna be a blast',
+-//                9,
+-//                "Welcome\neverybody\nto\nSymfony20\n21 this\nTDD\nworkshop\nit's\ngonna be\na blast"
+-//            ],
+-//            'performance' => [
+-//                $this->getWords(300),
+-//                1,
+-//                $this->getWords(300, true),
+-//            ]
++            'width includes a space' => ['x xx', 3, "x\nxx"],
++            'width includes a space following by another word' => ['x xx x', 3, "x\nxx\nx"],
++            'integration' => [
++                'Welcome everybody to Symfony2021 this TDD workshop it\'s gonna be a blast',
++                9,
++                "Welcome\neverybody\nto\nSymfony20\n21 this\nTDD\nworkshop\nit's\ngonna be\na blast"
++            ],
++            'performance' => [
++                $this->getWords(300),
++                1,
++                $this->getWords(300, true),
++            ]
+         ];
+     }
+ 
