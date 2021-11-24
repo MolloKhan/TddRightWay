@@ -179,7 +179,27 @@
             "id": "wordwrap-should-wrap-integration",
             "name": "WordWrap: should wrap integration",
             "description": null
+        },
+        {
+            "id": "wordwrap-performance-failure",
+            "name": "WordWrap: performance failure",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-back-up",
+            "name": "WordWrap: performance back up",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-basic-tests",
+            "name": "WordWrap: performance basic tests",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-width-includes-space",
+            "name": "WordWrap: performance width includes space",
+            "description": null
         }
     ],
-    "sha": "782137507642deb5efe06e97bc85aeb8b849733f"
+    "sha": "d3fb63397201e8b2182944c54fc05d2106f9d39d"
 }
