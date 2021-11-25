@@ -1,25 +1,26 @@
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
 new file mode 100644
-index 0000000..bd4ca10
+index 0000000..45c7c8c
 --- /dev/null
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -0,0 +1,19 @@
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -0,0 +1,20 @@
 +<?php
 +
 +namespace App\Tests\Repository;
 +
 +use App\Repository\GameResultRepository;
++use App\Repository\PlayerRepository;
 +use PHPUnit\Framework\TestCase;
 +use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 +
-+class GameResultRepositoryTest extends WebTestCase
++class PlayerRepositoryTest extends WebTestCase
 +{
 +    public function testSetup()
 +    {
 +        self::bootKernel();
 +
-+        $repository = self::getContainer()->get(GameResultRepository::class);
++        $repository = self::getContainer()->get(PlayerRepository::class);
 +
-+        self::assertInstanceOf(GameResultRepository::class, $repository);
++        self::assertInstanceOf(PlayerRepository::class, $repository);
 +    }
 +}

@@ -15,24 +15,25 @@ index 8270314..4fdd096 100644
 +        $this->createdAt = $createdAt;
 +    }
  }
-diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
-index fc25976..5d7e40c 100644
---- a/src/Repository/GameResultRepository.php
-+++ b/src/Repository/GameResultRepository.php
-@@ -22,6 +22,8 @@ class GameResultRepository extends ServiceEntityRepository
+diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
+index b6076c8..2408943 100644
+--- a/src/Repository/PlayerRepository.php
++++ b/src/Repository/PlayerRepository.php
+@@ -22,6 +22,9 @@ class PlayerRepository extends ServiceEntityRepository
      public function getScoreboard(): array
      {
-         return $this->createQueryBuilder('gr')
+         return $this->createQueryBuilder('p')
++            ->join('p.gameResults', 'gr')
 +            ->andWhere('gr.createdAt >= :dateLimit')
 +            ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
              ->setMaxResults(5)
              ->getQuery()
              ->execute();
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index 4e265af..710dd57 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -63,6 +63,20 @@ class GameResultRepositoryTest extends WebTestCase
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index e334ae2..9f62732 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -63,6 +63,20 @@ class PlayerRepositoryTest extends WebTestCase
          self::assertCount(5, $scoreboard);
      }
  

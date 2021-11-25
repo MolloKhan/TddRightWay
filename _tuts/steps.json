@@ -201,8 +201,8 @@
             "description": null
         },
         {
-            "id": "scoreboard-setup",
-            "name": "Scoreboard: setup",
+            "id": "pre-scoreboard",
+            "name": "Pre Scoreboard",
             "description": null
         },
         {
@@ -251,5 +251,5 @@
             "description": null
         }
     ],
-    "sha": "adfbbca5d745c296a0aeff21eaa8f0a02a95755c"
+    "sha": "317034b914e0fc1bceda9b629397e02bb4821cdc"
 }

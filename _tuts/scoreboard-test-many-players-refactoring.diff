@@ -1,8 +1,8 @@
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index e5a7a35..492a8dc 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -35,17 +35,12 @@ class GameResultRepositoryTest extends WebTestCase
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index f10fe64..6421967 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -35,17 +35,12 @@ class PlayerRepositoryTest extends WebTestCase
  
      public function testGetScoreboard_withManyPlayer()
      {
@@ -26,7 +26,7 @@ index e5a7a35..492a8dc 100644
  
          $scoreboard = $this->repository->getScoreboard();
  
-@@ -56,4 +51,20 @@ class GameResultRepositoryTest extends WebTestCase
+@@ -56,4 +51,20 @@ class PlayerRepositoryTest extends WebTestCase
      {
          return self::getContainer()->get(EntityManagerInterface::class);
      }

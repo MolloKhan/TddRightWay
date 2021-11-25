@@ -1,8 +1,8 @@
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index 4820ebe..e5a7a35 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -33,19 +33,23 @@ class GameResultRepositoryTest extends WebTestCase
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index ed8a0cf..f10fe64 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -33,19 +33,23 @@ class PlayerRepositoryTest extends WebTestCase
          self::assertEmpty($scoreboard);
      }
  

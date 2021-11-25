@@ -1,10 +1,10 @@
-diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
-index f7949c5..d33c0da 100644
---- a/src/Repository/GameResultRepository.php
-+++ b/src/Repository/GameResultRepository.php
-@@ -18,4 +18,9 @@ class GameResultRepository extends ServiceEntityRepository
+diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
+index 4beda01..a2296be 100644
+--- a/src/Repository/PlayerRepository.php
++++ b/src/Repository/PlayerRepository.php
+@@ -18,4 +18,9 @@ class PlayerRepository extends ServiceEntityRepository
      {
-         parent::__construct($registry, GameResult::class);
+         parent::__construct($registry, Player::class);
      }
 +
 +    public function getScoreboard(): array
@@ -12,13 +12,20 @@ index f7949c5..d33c0da 100644
 +        return [];
 +    }
  }
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index bd4ca10..8c76be4 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -8,12 +8,23 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index 45c7c8c..cf1f802 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -2,19 +2,28 @@
  
- class GameResultRepositoryTest extends WebTestCase
+ namespace App\Tests\Repository;
+ 
+-use App\Repository\GameResultRepository;
+ use App\Repository\PlayerRepository;
+-use PHPUnit\Framework\TestCase;
+ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+ class PlayerRepositoryTest extends WebTestCase
  {
 -    public function testSetup()
 +    // ZOMBIE (ZERO, ONE, MANY, BOUNDARIES, INTERFACES, EXCEPTIONS)
@@ -33,10 +40,10 @@ index bd4ca10..8c76be4 100644
      {
          self::bootKernel();
  
-+        /** @var GameResultRepository $repository */
-         $repository = self::getContainer()->get(GameResultRepository::class);
++        /** @var PlayerRepository $repository */
+         $repository = self::getContainer()->get(PlayerRepository::class);
  
--        self::assertInstanceOf(GameResultRepository::class, $repository);
+-        self::assertInstanceOf(PlayerRepository::class, $repository);
 +        $scoreboard = $repository->getScoreboard();
 +
 +        self::assertEmpty($scoreboard);

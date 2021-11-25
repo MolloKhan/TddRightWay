@@ -1,33 +1,32 @@
-diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
-index d33c0da..f7675cd 100644
---- a/src/Repository/GameResultRepository.php
-+++ b/src/Repository/GameResultRepository.php
-@@ -21,6 +21,8 @@ class GameResultRepository extends ServiceEntityRepository
+diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
+index a2296be..827281c 100644
+--- a/src/Repository/PlayerRepository.php
++++ b/src/Repository/PlayerRepository.php
+@@ -21,6 +21,8 @@ class PlayerRepository extends ServiceEntityRepository
  
      public function getScoreboard(): array
      {
 -        return [];
-+        return $this->createQueryBuilder('gr')
++        return $this->createQueryBuilder('p')
 +            ->getQuery()
 +            ->execute();
      }
  }
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index 8c76be4..f9d9c17 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -2,7 +2,10 @@
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index cf1f802..5efae14 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -2,6 +2,9 @@
  
  namespace App\Tests\Repository;
  
 +use App\Entity\GameResult;
 +use App\Entity\Player;
- use App\Repository\GameResultRepository;
 +use Doctrine\ORM\EntityManagerInterface;
- use PHPUnit\Framework\TestCase;
+ use App\Repository\PlayerRepository;
  use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  
-@@ -27,4 +30,24 @@ class GameResultRepositoryTest extends WebTestCase
+@@ -26,4 +29,24 @@ class PlayerRepositoryTest extends WebTestCase
  
          self::assertEmpty($scoreboard);
      }
@@ -44,8 +43,8 @@ index 8c76be4..f9d9c17 100644
 +        $em->persist($gameResult);
 +        $em->flush();
 +
-+        /** @var GameResultRepository $repository */
-+        $repository = self::getContainer()->get(GameResultRepository::class);
++        /** @var PlayerRepository $repository */
++        $repository = self::getContainer()->get(PlayerRepository::class);
 +
 +        $scoreboard = $repository->getScoreboard();
 +

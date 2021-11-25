@@ -1,5 +1,5 @@
 diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
-index 5d7e40c..0840176 100644
+index f7949c5..f56bd6d 100644
 --- a/src/Repository/GameResultRepository.php
 +++ b/src/Repository/GameResultRepository.php
 @@ -3,6 +3,7 @@
@@ -10,25 +10,26 @@ index 5d7e40c..0840176 100644
  use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
  use Doctrine\Persistence\ManagerRegistry;
  
-@@ -21,7 +22,12 @@ class GameResultRepository extends ServiceEntityRepository
- 
+diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
+index 2408943..a220e96 100644
+--- a/src/Repository/PlayerRepository.php
++++ b/src/Repository/PlayerRepository.php
+@@ -22,7 +22,10 @@ class PlayerRepository extends ServiceEntityRepository
      public function getScoreboard(): array
      {
--        return $this->createQueryBuilder('gr')
-+        return $this->getEntityManager()->getRepository(Player::class)
-+            ->createQueryBuilder('p')
+         return $this->createQueryBuilder('p')
 +            ->addSelect('p, COUNT(gr.victory) AS score')
 +            ->addGroupBy('p')
-+            ->join('p.gameResults', 'gr')
+             ->join('p.gameResults', 'gr')
 +            ->andWhere('gr.victory = 1')
              ->andWhere('gr.createdAt >= :dateLimit')
              ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
              ->setMaxResults(5)
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index 710dd57..cacab2a 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -76,7 +76,20 @@ class GameResultRepositoryTest extends WebTestCase
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index 9f62732..e47cb3c 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -76,7 +76,20 @@ class PlayerRepositoryTest extends WebTestCase
          
          self::assertCount(1, $scoreboard);
      }

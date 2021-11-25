@@ -1,12 +1,14 @@
-diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
-index f9d9c17..4820ebe 100644
---- a/tests/Repository/GameResultRepositoryTest.php
-+++ b/tests/Repository/GameResultRepositoryTest.php
-@@ -6,48 +6,50 @@ use App\Entity\GameResult;
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index 5efae14..ed8a0cf 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -4,49 +4,52 @@ namespace App\Tests\Repository;
+ 
+ use App\Entity\GameResult;
  use App\Entity\Player;
- use App\Repository\GameResultRepository;
- use Doctrine\ORM\EntityManagerInterface;
--use PHPUnit\Framework\TestCase;
+-use Doctrine\ORM\EntityManagerInterface;
+ use App\Repository\PlayerRepository;
++use Doctrine\ORM\EntityManagerInterface;
  use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  
 +// ZOMBIE (ZERO, ONE, MANY, BOUNDARIES, INTERFACES, EXCEPTIONS)
@@ -16,7 +18,7 @@ index f9d9c17..4820ebe 100644
 +// scoreboard shows no more than 5 players
 +// scoreboard ordered by highest score
 +// scoreboard is date range constrained to 15 days
- class GameResultRepositoryTest extends WebTestCase
+ class PlayerRepositoryTest extends WebTestCase
  {
 -    // ZOMBIE (ZERO, ONE, MANY, BOUNDARIES, INTERFACES, EXCEPTIONS)
 -    // scoreboard with zero players
@@ -25,16 +27,16 @@ index f9d9c17..4820ebe 100644
 -    // scoreboard shows no more than 5 players
 -    // scoreboard ordered by highest score
 -    // scoreboard is date range constrained to 15 days
-+    private GameResultRepository $repository;
++    private PlayerRepository $repository;
  
 -    public function testGetScoreboard_withZeroPlayers()
 +    public function setUp(): void
      {
          self::bootKernel();
  
--        /** @var GameResultRepository $repository */
--        $repository = self::getContainer()->get(GameResultRepository::class);
-+        $this->repository = self::getContainer()->get(GameResultRepository::class);
+-        /** @var PlayerRepository $repository */
+-        $repository = self::getContainer()->get(PlayerRepository::class);
++        $this->repository = self::getContainer()->get(PlayerRepository::class);
 +    }
  
 -        $scoreboard = $repository->getScoreboard();
@@ -58,8 +60,8 @@ index f9d9c17..4820ebe 100644
          $em->persist($gameResult);
          $em->flush();
  
--        /** @var GameResultRepository $repository */
--        $repository = self::getContainer()->get(GameResultRepository::class);
+-        /** @var PlayerRepository $repository */
+-        $repository = self::getContainer()->get(PlayerRepository::class);
 -
 -        $scoreboard = $repository->getScoreboard();
 +        $scoreboard = $this->repository->getScoreboard();
