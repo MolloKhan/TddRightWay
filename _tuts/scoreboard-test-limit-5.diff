@@ -1,0 +1,52 @@
+diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
+index f7675cd..fc25976 100644
+--- a/src/Repository/GameResultRepository.php
++++ b/src/Repository/GameResultRepository.php
+@@ -22,6 +22,7 @@ class GameResultRepository extends ServiceEntityRepository
+     public function getScoreboard(): array
+     {
+         return $this->createQueryBuilder('gr')
++            ->setMaxResults(5)
+             ->getQuery()
+             ->execute();
+     }
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index 492a8dc..4e265af 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -47,6 +47,22 @@ class GameResultRepositoryTest extends WebTestCase
+         self::assertCount(2, $scoreboard);
+     }
+ 
++    public function testGetScoreboard_limitsTo5Players()
++    {
++        $this->createPlayerWithVictory('player1');
++        $this->createPlayerWithVictory('player2');
++        $this->createPlayerWithVictory('player3');
++        $this->createPlayerWithVictory('player4');
++        $this->createPlayerWithVictory('player5');
++        $this->createPlayerWithVictory('player6');
++
++        $this->getEntityManager()->flush();
++
++        $scoreboard = $this->repository->getScoreboard();
++
++        self::assertCount(5, $scoreboard);
++    }
++
+     private function getEntityManager(): EntityManagerInterface
+     {
+         return self::getContainer()->get(EntityManagerInterface::class);
+@@ -67,4 +83,12 @@ class GameResultRepositoryTest extends WebTestCase
+ 
+         return $gameResult;
+     }
++
++    private function createPlayerWithVictory(string $nickname): Player
++    {
++        $player = $this->createPlayer($nickname);
++        $this->createGameResult($player, true);
++
++        return $player;
++    }
+ }

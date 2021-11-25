@@ -1,0 +1,54 @@
+diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
+index d33c0da..f7675cd 100644
+--- a/src/Repository/GameResultRepository.php
++++ b/src/Repository/GameResultRepository.php
+@@ -21,6 +21,8 @@ class GameResultRepository extends ServiceEntityRepository
+ 
+     public function getScoreboard(): array
+     {
+-        return [];
++        return $this->createQueryBuilder('gr')
++            ->getQuery()
++            ->execute();
+     }
+ }
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index 8c76be4..f9d9c17 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -2,7 +2,10 @@
+ 
+ namespace App\Tests\Repository;
+ 
++use App\Entity\GameResult;
++use App\Entity\Player;
+ use App\Repository\GameResultRepository;
++use Doctrine\ORM\EntityManagerInterface;
+ use PHPUnit\Framework\TestCase;
+ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+@@ -27,4 +30,24 @@ class GameResultRepositoryTest extends WebTestCase
+ 
+         self::assertEmpty($scoreboard);
+     }
++
++    public function testGetScoreboard_withOnePlayer()
++    {
++        self::bootKernel();
++
++        $player = new Player('player');
++        $gameResult = new GameResult($player, true);
++
++        $em = self::getContainer()->get(EntityManagerInterface::class);
++        $em->persist($player);
++        $em->persist($gameResult);
++        $em->flush();
++
++        /** @var GameResultRepository $repository */
++        $repository = self::getContainer()->get(GameResultRepository::class);
++
++        $scoreboard = $repository->getScoreboard();
++
++        self::assertCount(1, $scoreboard);
++    }
+ }

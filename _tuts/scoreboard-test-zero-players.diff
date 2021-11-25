@@ -1,0 +1,44 @@
+diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
+index f7949c5..d33c0da 100644
+--- a/src/Repository/GameResultRepository.php
++++ b/src/Repository/GameResultRepository.php
+@@ -18,4 +18,9 @@ class GameResultRepository extends ServiceEntityRepository
+     {
+         parent::__construct($registry, GameResult::class);
+     }
++
++    public function getScoreboard(): array
++    {
++        return [];
++    }
+ }
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index bd4ca10..8c76be4 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -8,12 +8,23 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+ class GameResultRepositoryTest extends WebTestCase
+ {
+-    public function testSetup()
++    // ZOMBIE (ZERO, ONE, MANY, BOUNDARIES, INTERFACES, EXCEPTIONS)
++    // scoreboard with zero players
++    // scoreboard with one player
++    // scoreboard with many players
++    // scoreboard shows no more than 5 players
++    // scoreboard ordered by highest score
++    // scoreboard is date range constrained to 15 days
++
++    public function testGetScoreboard_withZeroPlayers()
+     {
+         self::bootKernel();
+ 
++        /** @var GameResultRepository $repository */
+         $repository = self::getContainer()->get(GameResultRepository::class);
+ 
+-        self::assertInstanceOf(GameResultRepository::class, $repository);
++        $scoreboard = $repository->getScoreboard();
++
++        self::assertEmpty($scoreboard);
+     }
+ }

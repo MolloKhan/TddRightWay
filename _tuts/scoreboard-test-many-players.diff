@@ -1,0 +1,30 @@
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index 4820ebe..e5a7a35 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -33,19 +33,23 @@ class GameResultRepositoryTest extends WebTestCase
+         self::assertEmpty($scoreboard);
+     }
+ 
+-    public function testGetScoreboard_withOnePlayer()
++    public function testGetScoreboard_withManyPlayer()
+     {
+         $player = new Player('player');
++        $player2 = new Player('player2');
+         $gameResult = new GameResult($player, true);
++        $gameResult2 = new GameResult($player2, true);
+ 
+         $em = $this->getEntityManager();
+         $em->persist($player);
++        $em->persist($player2);
+         $em->persist($gameResult);
++        $em->persist($gameResult2);
+         $em->flush();
+ 
+         $scoreboard = $this->repository->getScoreboard();
+ 
+-        self::assertCount(1, $scoreboard);
++        self::assertCount(2, $scoreboard);
+     }
+ 
+     private function getEntityManager(): EntityManagerInterface

@@ -199,7 +199,57 @@
             "id": "wordwrap-performance-width-includes-space",
             "name": "WordWrap: performance width includes space",
             "description": null
+        },
+        {
+            "id": "scoreboard-setup",
+            "name": "Scoreboard: setup",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-setup",
+            "name": "Scoreboard: test setup",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-zero-players",
+            "name": "Scoreboard: test zero players",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-one-many-players",
+            "name": "Scoreboard: test one-many players",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-one-many-players-refactoring",
+            "name": "Scoreboard: test one-many players refactoring",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-many-players",
+            "name": "Scoreboard: test many players",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-many-players-refactoring",
+            "name": "Scoreboard: test many players refactoring",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-limit-5",
+            "name": "Scoreboard: test limit 5",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-date-constraint",
+            "name": "Scoreboard: test date constraint",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-calculate-score",
+            "name": "Scoreboard: test calculate score",
+            "description": null
         }
     ],
-    "sha": "d3fb63397201e8b2182944c54fc05d2106f9d39d"
+    "sha": "adfbbca5d745c296a0aeff21eaa8f0a02a95755c"
 }

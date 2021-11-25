@@ -1,0 +1,74 @@
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index f9d9c17..4820ebe 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -6,48 +6,50 @@ use App\Entity\GameResult;
+ use App\Entity\Player;
+ use App\Repository\GameResultRepository;
+ use Doctrine\ORM\EntityManagerInterface;
+-use PHPUnit\Framework\TestCase;
+ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
++// ZOMBIE (ZERO, ONE, MANY, BOUNDARIES, INTERFACES, EXCEPTIONS)
++// scoreboard with zero players
++// scoreboard with one player
++// scoreboard with many players
++// scoreboard shows no more than 5 players
++// scoreboard ordered by highest score
++// scoreboard is date range constrained to 15 days
+ class GameResultRepositoryTest extends WebTestCase
+ {
+-    // ZOMBIE (ZERO, ONE, MANY, BOUNDARIES, INTERFACES, EXCEPTIONS)
+-    // scoreboard with zero players
+-    // scoreboard with one player
+-    // scoreboard with many players
+-    // scoreboard shows no more than 5 players
+-    // scoreboard ordered by highest score
+-    // scoreboard is date range constrained to 15 days
++    private GameResultRepository $repository;
+ 
+-    public function testGetScoreboard_withZeroPlayers()
++    public function setUp(): void
+     {
+         self::bootKernel();
+ 
+-        /** @var GameResultRepository $repository */
+-        $repository = self::getContainer()->get(GameResultRepository::class);
++        $this->repository = self::getContainer()->get(GameResultRepository::class);
++    }
+ 
+-        $scoreboard = $repository->getScoreboard();
++    public function testGetScoreboard_withZeroPlayers()
++    {
++        $scoreboard = $this->repository->getScoreboard();
+ 
+         self::assertEmpty($scoreboard);
+     }
+ 
+     public function testGetScoreboard_withOnePlayer()
+     {
+-        self::bootKernel();
+-
+         $player = new Player('player');
+         $gameResult = new GameResult($player, true);
+ 
+-        $em = self::getContainer()->get(EntityManagerInterface::class);
++        $em = $this->getEntityManager();
+         $em->persist($player);
+         $em->persist($gameResult);
+         $em->flush();
+ 
+-        /** @var GameResultRepository $repository */
+-        $repository = self::getContainer()->get(GameResultRepository::class);
+-
+-        $scoreboard = $repository->getScoreboard();
++        $scoreboard = $this->repository->getScoreboard();
+ 
+         self::assertCount(1, $scoreboard);
+     }
++
++    private function getEntityManager(): EntityManagerInterface
++    {
++        return self::getContainer()->get(EntityManagerInterface::class);
++    }
+ }

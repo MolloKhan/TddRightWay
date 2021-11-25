@@ -1,0 +1,52 @@
+diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
+index 5d7e40c..0840176 100644
+--- a/src/Repository/GameResultRepository.php
++++ b/src/Repository/GameResultRepository.php
+@@ -3,6 +3,7 @@
+ namespace App\Repository;
+ 
+ use App\Entity\GameResult;
++use App\Entity\Player;
+ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+ use Doctrine\Persistence\ManagerRegistry;
+ 
+@@ -21,7 +22,12 @@ class GameResultRepository extends ServiceEntityRepository
+ 
+     public function getScoreboard(): array
+     {
+-        return $this->createQueryBuilder('gr')
++        return $this->getEntityManager()->getRepository(Player::class)
++            ->createQueryBuilder('p')
++            ->addSelect('p, COUNT(gr.victory) AS score')
++            ->addGroupBy('p')
++            ->join('p.gameResults', 'gr')
++            ->andWhere('gr.victory = 1')
+             ->andWhere('gr.createdAt >= :dateLimit')
+             ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
+             ->setMaxResults(5)
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index 710dd57..cacab2a 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -76,7 +76,20 @@ class GameResultRepositoryTest extends WebTestCase
+         
+         self::assertCount(1, $scoreboard);
+     }
+-    
++
++    public function testGetScoreBoard_calculatingPlayersScore()
++    {
++        $player = $this->createPlayerWithVictory('player1');
++        $this->createGameResult($player, false);
++
++        $this->getEntityManager()->flush();
++
++        $scoreboard = $this->repository->getScoreboard();
++
++        self::assertCount(1, $scoreboard);
++        self::assertEquals(1, $scoreboard[0]['score']);
++    }
++
+     private function getEntityManager(): EntityManagerInterface
+     {
+         return self::getContainer()->get(EntityManagerInterface::class);

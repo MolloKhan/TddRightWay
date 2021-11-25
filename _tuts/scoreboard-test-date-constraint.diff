@@ -1,0 +1,55 @@
+diff --git a/src/Entity/GameResult.php b/src/Entity/GameResult.php
+index 8270314..4fdd096 100644
+--- a/src/Entity/GameResult.php
++++ b/src/Entity/GameResult.php
+@@ -59,4 +59,12 @@ class GameResult
+     {
+         return $this->createdAt;
+     }
++
++    /**
++     * @internal only for testing purposes
++     */
++    public function setCreatedAt(\DateTimeImmutable $createdAt)
++    {
++        $this->createdAt = $createdAt;
++    }
+ }
+diff --git a/src/Repository/GameResultRepository.php b/src/Repository/GameResultRepository.php
+index fc25976..5d7e40c 100644
+--- a/src/Repository/GameResultRepository.php
++++ b/src/Repository/GameResultRepository.php
+@@ -22,6 +22,8 @@ class GameResultRepository extends ServiceEntityRepository
+     public function getScoreboard(): array
+     {
+         return $this->createQueryBuilder('gr')
++            ->andWhere('gr.createdAt >= :dateLimit')
++            ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
+             ->setMaxResults(5)
+             ->getQuery()
+             ->execute();
+diff --git a/tests/Repository/GameResultRepositoryTest.php b/tests/Repository/GameResultRepositoryTest.php
+index 4e265af..710dd57 100644
+--- a/tests/Repository/GameResultRepositoryTest.php
++++ b/tests/Repository/GameResultRepositoryTest.php
+@@ -63,6 +63,20 @@ class GameResultRepositoryTest extends WebTestCase
+         self::assertCount(5, $scoreboard);
+     }
+ 
++    public function testGetScoreBoard_ignoresRecordsOlderThan15Days()
++    {
++        $this->createPlayerWithVictory('player1');
++        $p2 = $this->createPlayer('p2');
++        $gameResult = $this->createGameResult($p2, true);
++        $gameResult->setCreatedAt(new \DateTimeImmutable('-16 days'));
++
++        $this->getEntityManager()->flush();
++
++        $scoreboard = $this->repository->getScoreboard();
++        
++        self::assertCount(1, $scoreboard);
++    }
++    
+     private function getEntityManager(): EntityManagerInterface
+     {
+         return self::getContainer()->get(EntityManagerInterface::class);
