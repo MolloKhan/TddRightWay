@@ -22,6 +22,7 @@ class PlayerRepository extends ServiceEntityRepository
     public function getScoreboard(): array
     {
         return $this->createQueryBuilder('p')
+            ->setMaxResults(5)
             ->getQuery()
             ->execute();
     }

@@ -47,6 +47,22 @@ class PlayerRepositoryTest extends WebTestCase
         self::assertCount(2, $scoreboard);
     }
 
+    public function testGetScoreboard_limitsTo5Players()
+    {
+        $this->createPlayerWithVictory('player1');
+        $this->createPlayerWithVictory('player2');
+        $this->createPlayerWithVictory('player3');
+        $this->createPlayerWithVictory('player4');
+        $this->createPlayerWithVictory('player5');
+        $this->createPlayerWithVictory('player6');
+
+        $this->getEntityManager()->flush();
+
+        $scoreboard = $this->repository->getScoreboard();
+
+        self::assertCount(5, $scoreboard);
+    }
+
     private function getEntityManager(): EntityManagerInterface
     {
         return self::getContainer()->get(EntityManagerInterface::class);
@@ -66,5 +82,13 @@ class PlayerRepositoryTest extends WebTestCase
         $this->getEntityManager()->persist($gameResult);
 
         return $gameResult;
+    }
+
+    private function createPlayerWithVictory(string $nickname): Player
+    {
+        $player = $this->createPlayer($nickname);
+        $this->createGameResult($player, true);
+
+        return $player;
     }
 }
