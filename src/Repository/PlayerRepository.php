@@ -22,6 +22,9 @@ class PlayerRepository extends ServiceEntityRepository
     public function getScoreboard(): array
     {
         return $this->createQueryBuilder('p')
+            ->join('p.gameResults', 'gr')
+            ->andWhere('gr.createdAt >= :dateLimit')
+            ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
             ->setMaxResults(5)
             ->getQuery()
             ->execute();

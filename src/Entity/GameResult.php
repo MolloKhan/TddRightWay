@@ -59,4 +59,12 @@ class GameResult
     {
         return $this->createdAt;
     }
+
+    /**
+     * @internal only for testing purposes
+     */
+    public function setCreatedAt(\DateTimeImmutable $createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
 }

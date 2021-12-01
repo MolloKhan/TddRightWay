@@ -63,6 +63,20 @@ class PlayerRepositoryTest extends WebTestCase
         self::assertCount(5, $scoreboard);
     }
 
+    public function testGetScoreBoard_ignoresRecordsOlderThan15Days()
+    {
+        $this->createPlayerWithVictory('player1');
+        $p2 = $this->createPlayer('p2');
+        $gameResult = $this->createGameResult($p2, true);
+        $gameResult->setCreatedAt(new \DateTimeImmutable('-16 days'));
+
+        $this->getEntityManager()->flush();
+
+        $scoreboard = $this->repository->getScoreboard();
+        
+        self::assertCount(1, $scoreboard);
+    }
+    
     private function getEntityManager(): EntityManagerInterface
     {
         return self::getContainer()->get(EntityManagerInterface::class);
