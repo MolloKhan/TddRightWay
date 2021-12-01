@@ -25,7 +25,8 @@ class WordWrapperTest extends TestCase
             'break word' => ['xx', 1, "x\nx"],
             'one word multiple break lines' => ['xxx', 1, "x\nx\nx"],
             'space after break line' => ['x x', 1, "x\nx"],
-            'width includes a space' => ['x xx', 3, "x\nxx"]
+            'width includes a space' => ['x xx', 3, "x\nxx"],
+            'width includes a space following by another word' => ['x xx x', 3, "x\nxx\nx"],
         ];
     }
 }

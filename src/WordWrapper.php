@@ -14,7 +14,7 @@ class WordWrapper
             return $s;
         }
 
-        $breakPoint = strrpos($s, ' ');
+        $breakPoint = strrpos(substr($s, 0, $width), ' ');
         if ($breakPoint === false) {
             $breakPoint = $width;
         }
