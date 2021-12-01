@@ -18,4 +18,9 @@ class PlayerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Player::class);
     }
+
+    public function getScoreboard(): array
+    {
+        return [];
+    }
 }
