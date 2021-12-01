@@ -35,17 +35,12 @@ class PlayerRepositoryTest extends WebTestCase
 
     public function testGetScoreboard_withManyPlayer()
     {
-        $player = new Player('player');
-        $player2 = new Player('player2');
-        $gameResult = new GameResult($player, true);
-        $gameResult2 = new GameResult($player2, true);
+        $player = $this->createPlayer('player');
+        $player2 = $this->createPlayer('player2');
+        $gameResult = $this->createGameResult($player, true);
+        $gameResult2 = $this->createGameResult($player2, true);
 
-        $em = $this->getEntityManager();
-        $em->persist($player);
-        $em->persist($player2);
-        $em->persist($gameResult);
-        $em->persist($gameResult2);
-        $em->flush();
+        $this->getEntityManager()->flush();
 
         $scoreboard = $this->repository->getScoreboard();
 
@@ -55,5 +50,21 @@ class PlayerRepositoryTest extends WebTestCase
     private function getEntityManager(): EntityManagerInterface
     {
         return self::getContainer()->get(EntityManagerInterface::class);
+    }
+
+    private function createPlayer(string $nickname): Player
+    {
+        $player = new Player($nickname);
+        $this->getEntityManager()->persist($player);
+
+        return $player;
+    }
+
+    private function createGameResult(Player $player, bool $victory): GameResult
+    {
+        $gameResult = new GameResult($player, $victory);
+        $this->getEntityManager()->persist($gameResult);
+
+        return $gameResult;
     }
 }
