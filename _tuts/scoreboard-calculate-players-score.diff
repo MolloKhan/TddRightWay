@@ -1,0 +1,39 @@
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index 169c82c..3cf2271 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -77,21 +77,7 @@ class PlayerRepositoryTest extends WebTestCase
+         self::assertCount(1, $scoreboard);
+     }
+ 
+-    public function testGetScoreBoard_calculatingPlayersScore()
+-    {
+-        $player = $this->createPlayerWithVictory('player1');
+-        $this->createGameResult($player, false);
+-
+-        $this->getEntityManager()->flush();
+-
+-        $scoreboard = $this->repository->getScoreboard();
+-
+-        self::assertCount(1, $scoreboard);
+-        self::assertEquals(1, $scoreboard[0]['score']);
+-        self::assertSame($player, $scoreboard[0][0]);
+-    }
+-
+-    public function testGetScoreBoard_isOrderedByHighestScore()
++    public function testGetScoreBoard_calculatePlayersScore()
+     {
+         $p1 = $this->createPlayerWithVictory('player1');
+ 
+@@ -107,8 +93,11 @@ class PlayerRepositoryTest extends WebTestCase
+         $scoreboard = $this->repository->getScoreboard();
+         
+         self::assertSame($p2, $scoreboard[0][0]);
++        self::assertEquals(3, $scoreboard[0]['score']);
+         self::assertSame($p3, $scoreboard[1][0]);
++        self::assertEquals(2, $scoreboard[1]['score']);
+         self::assertSame($p1, $scoreboard[2][0]);
++        self::assertEquals(1, $scoreboard[2]['score']);
+     }
+     
+     private function getEntityManager(): EntityManagerInterface
