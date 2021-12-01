@@ -26,10 +26,10 @@ index 2408943..a220e96 100644
              ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
              ->setMaxResults(5)
 diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
-index 9f62732..e47cb3c 100644
+index 9f62732..4e85dce 100644
 --- a/tests/Repository/PlayerRepositoryTest.php
 +++ b/tests/Repository/PlayerRepositoryTest.php
-@@ -76,7 +76,20 @@ class PlayerRepositoryTest extends WebTestCase
+@@ -76,7 +76,21 @@ class PlayerRepositoryTest extends WebTestCase
          
          self::assertCount(1, $scoreboard);
      }
@@ -46,6 +46,7 @@ index 9f62732..e47cb3c 100644
 +
 +        self::assertCount(1, $scoreboard);
 +        self::assertEquals(1, $scoreboard[0]['score']);
++        self::assertSame($player, $scoreboard[0][0]);
 +    }
 +
      private function getEntityManager(): EntityManagerInterface
