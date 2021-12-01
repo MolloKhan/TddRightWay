@@ -23,7 +23,8 @@ class WordWrapperTest extends TestCase
             'empty case' => ['', 1, ''],
             'one word' => ['x', 1, 'x'],
             'break word' => ['xx', 1, "x\nx"],
-            'one word multiple break lines' => ['xxx', 1, "x\nx\nx"]
+            'one word multiple break lines' => ['xxx', 1, "x\nx\nx"],
+            'space after break line' => ['x x', 1, "x\nx"]
         ];
     }
 }
