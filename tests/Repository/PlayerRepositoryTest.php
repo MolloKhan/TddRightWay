@@ -76,7 +76,21 @@ class PlayerRepositoryTest extends WebTestCase
         
         self::assertCount(1, $scoreboard);
     }
-    
+
+    public function testGetScoreBoard_calculatingPlayersScore()
+    {
+        $player = $this->createPlayerWithVictory('player1');
+        $this->createGameResult($player, false);
+
+        $this->getEntityManager()->flush();
+
+        $scoreboard = $this->repository->getScoreboard();
+
+        self::assertCount(1, $scoreboard);
+        self::assertEquals(1, $scoreboard[0]['score']);
+        self::assertSame($player, $scoreboard[0][0]);
+    }
+
     private function getEntityManager(): EntityManagerInterface
     {
         return self::getContainer()->get(EntityManagerInterface::class);
