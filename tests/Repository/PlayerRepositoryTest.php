@@ -91,6 +91,26 @@ class PlayerRepositoryTest extends WebTestCase
         self::assertSame($player, $scoreboard[0][0]);
     }
 
+    public function testGetScoreBoard_isOrderedByHighestScore()
+    {
+        $p1 = $this->createPlayerWithVictory('player1');
+
+        $p2 = $this->createPlayerWithVictory('player2');
+        $this->createGameResult($p2, true);
+        $this->createGameResult($p2, true);
+
+        $p3 = $this->createPlayerWithVictory('player3');
+        $this->createGameResult($p3, true);
+
+        $this->getEntityManager()->flush();
+
+        $scoreboard = $this->repository->getScoreboard();
+        
+        self::assertSame($p2, $scoreboard[0][0]);
+        self::assertSame($p3, $scoreboard[1][0]);
+        self::assertSame($p1, $scoreboard[2][0]);
+    }
+    
     private function getEntityManager(): EntityManagerInterface
     {
         return self::getContainer()->get(EntityManagerInterface::class);

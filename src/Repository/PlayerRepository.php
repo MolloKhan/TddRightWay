@@ -29,6 +29,7 @@ class PlayerRepository extends ServiceEntityRepository
             ->andWhere('gr.createdAt >= :dateLimit')
             ->setParameter('dateLimit', new \DateTimeImmutable('-15 days'))
             ->setMaxResults(5)
+            ->orderBy('score', 'DESC')
             ->getQuery()
             ->execute();
     }
