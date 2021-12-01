@@ -21,6 +21,7 @@ class WordWrapperTest extends TestCase
     {
         return [
             'empty case' => ['', 1, ''],
+            'one word' => ['x', 1, 'x'],
         ];
     }
 }
