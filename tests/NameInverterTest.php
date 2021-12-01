@@ -7,14 +7,20 @@ use PHPUnit\Framework\TestCase;
 
 class NameInverterTest extends TestCase
 {
+    private NameInverter $nameInverter;
+
+    protected function setUp(): void
+    {
+        $this->nameInverter = new NameInverter();
+    }
+
     public function testInvert_givenNull_returnEmptyString()
     {
         // Arrange
         $name = null;
 
         // Act
-        $nameInverter = new NameInverter();
-        $invertedName = $nameInverter->invert($name);
+        $invertedName = $this->nameInverter->invert($name);
 
         // Assert
         self::assertEquals('', $invertedName);
@@ -22,11 +28,11 @@ class NameInverterTest extends TestCase
 
     public function testInvert_givenSimpleName_returnName()
     {
-        $name = 'Diego';
+        $this->assertInvertedName('Diego', 'Diego');
+    }
 
-        $nameInverter = new NameInverter();
-        $invertedName = $nameInverter->invert($name);
-        
-        self::assertEquals('Diego', $invertedName);
+    private function assertInvertedName(string $name, string $invertedName): void
+    {
+        self::assertEquals($invertedName, $this->nameInverter->invert($name));
     }
 }
