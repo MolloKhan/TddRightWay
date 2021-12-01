@@ -4,6 +4,8 @@ namespace App;
 
 class WordWrapper
 {
+    private $breakPoint = false;
+
     public function wrap(string $s, int $width): string
     {
         $r = '';
@@ -11,7 +13,7 @@ class WordWrapper
 
         do {
             $r .= $this->cut($newString, $width);
-            $tail = trim(substr($newString, $width));
+            $tail = trim(substr($newString, $this->breakPoint));
             if ($tail) {
                 $r .= "\n";
             }
@@ -24,6 +26,8 @@ class WordWrapper
 
     private function cut(string $s, int $width): string
     {
+        $this->breakPoint = $width;
+
         if (!$s) {
             return '';
         }
@@ -32,24 +36,11 @@ class WordWrapper
             return $s;
         }
 
-        return substr($s, 0, $width);
-    }
-
-    public function wrapOld(string $s, int $width): string
-    {
-        if (!$s) {
-            return '';
+        $this->breakPoint = strrpos(substr($s, 0, $width), ' ');
+        if ($this->breakPoint === false) {
+            $this->breakPoint = $width;
         }
 
-        if (strlen($s) <= $width) {
-            return $s;
-        }
-
-        $breakPoint = strrpos(substr($s, 0, $width), ' ');
-        if ($breakPoint === false) {
-            $breakPoint = $width;
-        }
-
-        return substr($s, 0, $width) . "\n" . substr($s, $width);
+        return substr($s, 0, $this->breakPoint);
     }
 }
