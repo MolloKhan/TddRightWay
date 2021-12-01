@@ -11,6 +11,10 @@ class NameInverter
         }
 
         $nameParts = preg_split('/\s+/', trim($name));
+        if (count($nameParts) > 1 && $nameParts[0] === 'Mr.') {
+            array_shift($nameParts);
+        }
+        
         if (count($nameParts) === 1) {
             return $nameParts[0];
         }

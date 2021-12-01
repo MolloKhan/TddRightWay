@@ -45,7 +45,12 @@ class NameInverterTest extends TestCase
     {
         $this->assertInvertedName('  Diego  Aguiar  ', 'Aguiar, Diego');
     }
-    
+
+    public function testInvert_ignoreHonorifics()
+    {
+        $this->assertInvertedName('Mr. Diego Aguiar', 'Aguiar, Diego');
+    }
+
     private function assertInvertedName(string $name, string $invertedName): void
     {
         self::assertEquals($invertedName, $this->nameInverter->invert($name));
