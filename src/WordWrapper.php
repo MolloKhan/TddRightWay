@@ -14,11 +14,11 @@ class WordWrapper
             return $s;
         }
 
-        $breakPoint = strrpos(substr($s, 0, $width), ' ');
-        if ($breakPoint === false) {
-            $breakPoint = $width;
-        }
+//        $breakPoint = strrpos(substr($s, 0, $width), ' ');
+//        if ($breakPoint === false) {
+//            $breakPoint = $width;
+//        }
 
-        return substr($s, 0, $breakPoint) . "\n" . $this->wrap(trim(substr($s, $breakPoint)), $width);
+        return substr($s, 0, $width) . "\n" . substr($s, $width);
     }
 }
