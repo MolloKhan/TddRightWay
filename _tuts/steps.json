@@ -249,7 +249,27 @@
             "id": "scoreboard-test-calculate-score",
             "name": "Scoreboard: test calculate score",
             "description": null
+        },
+        {
+            "id": "scoreboard-test-ordered-by-score",
+            "name": "Scoreboard: test ordered by score",
+            "description": null
+        },
+        {
+            "id": "scoreboard-calculate-players-score",
+            "name": "Scoreboard: calculate players score",
+            "description": null
+        },
+        {
+            "id": "scoreboard-top5-integration",
+            "name": "Scoreboard: top5 integration",
+            "description": null
+        },
+        {
+            "id": "scoreboard-refactoring-tests",
+            "name": "Scoreboard: refactoring tests",
+            "description": null
         }
     ],
-    "sha": "317034b914e0fc1bceda9b629397e02bb4821cdc"
+    "sha": "92094c6d752dca43aa48a0381f4a3b3405550ef9"
 }
