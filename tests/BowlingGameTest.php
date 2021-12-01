@@ -7,15 +7,18 @@ use PHPUnit\Framework\TestCase;
 
 class BowlingGameTest extends TestCase
 {
+    private BowlingGame $game;
+
+    protected function setUp(): void
+    {
+        $this->game = new BowlingGame();
+    }
+
     public function testGutterGame()
     {
-        $game = new BowlingGame();
+        $this->rollMany(20, 0);
 
-        for ($i = 0; $i < 20; $i++) {
-            $game->roll(0);
-        }
-
-        self::assertEquals(0, $game->score());
+        self::assertEquals(0, $this->game->score());
     }
 
     /**
@@ -23,12 +26,15 @@ class BowlingGameTest extends TestCase
      */
     public function testAllOnes()
     {
-        $game = new BowlingGame();
+        $this->rollMany(20, 1);
 
-        for ($i = 0; $i < 20; $i++) {
-            $game->roll(1);
+        self::assertEquals(20, $this->game->score());
+    }
+
+    private function rollMany(int $n, int $pins): void
+    {
+        for ($i = 0; $i < $n; $i++) {
+            $this->game->roll($pins);
         }
-
-        self::assertEquals(20, $game->score());
     }
 }
