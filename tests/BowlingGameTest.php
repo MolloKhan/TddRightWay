@@ -42,8 +42,7 @@ class BowlingGameTest extends TestCase
 
     public function testOneStrike()
     {
-        $this->game->roll(10); // strike
-        $this->game->roll(3);
+        $this->rollStrike();
         $this->game->roll(4);
         $this->rollMany(0, 16);
 
@@ -61,5 +60,11 @@ class BowlingGameTest extends TestCase
     {
         $this->game->roll(5);
         $this->game->roll(5);
+    }
+
+    private function rollStrike(): void
+    {
+        $this->game->roll(10);
+        $this->game->roll(3);
     }
 }
