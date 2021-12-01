@@ -31,7 +31,19 @@ class WordWrapperTest extends TestCase
                 'Welcome everybody to Symfony2021 this TDD workshop it\'s gonna be a blast',
                 9,
                 "Welcome\neverybody\nto\nSymfony20\n21 this\nTDD\nworkshop\nit's\ngonna be\na blast"
+            ],
+            'performance' => [
+                $this->getWords(300),
+                1,
+                $this->getWords(300, true),
             ]
         ];
+    }
+
+    private function getWords(int $quantity, bool $useBreakLine = false): string
+    {
+        $word = 'a' . ($useBreakLine ? "\n" : ' ');
+
+        return rtrim(str_repeat($word, $quantity));
     }
 }
