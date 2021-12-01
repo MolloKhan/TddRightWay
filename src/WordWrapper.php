@@ -6,10 +6,14 @@ class WordWrapper
 {
     public function wrap(string $s, int $width): string
     {
-        if (strlen($s) > $width) {
-            return str_replace(' ', "\n", $s);
+        if (!$s) {
+            return '';
         }
         
-        return $s;
+        if (strlen($s) <= $width) {
+            return $s;
+        }
+
+        return substr($s, 0, $width) . "\n" . substr($s, $width);
     }
 }
