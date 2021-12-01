@@ -27,6 +27,11 @@ class WordWrapperTest extends TestCase
             'space after break line' => ['x x', 1, "x\nx"],
             'width includes a space' => ['x xx', 3, "x\nxx"],
             'width includes a space following by another word' => ['x xx x', 3, "x\nxx\nx"],
+            'integration' => [
+                'Welcome everybody to Symfony2021 this TDD workshop it\'s gonna be a blast',
+                9,
+                "Welcome\neverybody\nto\nSymfony20\n21 this\nTDD\nworkshop\nit's\ngonna be\na blast"
+            ]
         ];
     }
 }
