@@ -22,4 +22,12 @@ class WordWrapperTest extends TestCase
 
         self::assertEquals("a word", $result);
     }
+
+    public function testBreakLineAcrossWord()
+    {
+        $wordWrapper = new WordWrapper();
+        $result = $wordWrapper->wrap('this is a test', 4);
+
+        self::assertEquals("this\nis a\ntest", $result);
+    }
 }
