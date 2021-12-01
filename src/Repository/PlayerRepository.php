@@ -21,6 +21,8 @@ class PlayerRepository extends ServiceEntityRepository
 
     public function getScoreboard(): array
     {
-        return [];
+        return $this->createQueryBuilder('p')
+            ->getQuery()
+            ->execute();
     }
 }
