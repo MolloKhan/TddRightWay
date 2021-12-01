@@ -4,13 +4,16 @@ namespace App;
 
 class BowlingGame
 {
-    public function roll(int $int)
+    private int $score = 0;
+
+    public function roll(int $pins)
     {
+        $this->score += $pins;
     }
 
     public function score(): int
     {
         // "fake it till you make it" technique
-        return 0;
+        return $this->score;
     }
 }
