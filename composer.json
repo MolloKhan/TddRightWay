@@ -1,4 +1,6 @@
 {
+    "name": "larzuk91/tddrightway",
+    "description": "Coding project for the TDD workshop",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
