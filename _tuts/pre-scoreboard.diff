@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 87fae32..8d1b4d8 100755
+index 32b58e1..4f95df8 100755
 --- a/composer.json
 +++ b/composer.json
-@@ -44,6 +44,7 @@
+@@ -46,6 +46,7 @@
          "twig/twig": "^2.12|^3.0"
      },
      "require-dev": {
@@ -10,7 +10,7 @@ index 87fae32..8d1b4d8 100755
          "phpunit/phpunit": "^9.5",
          "symfony/browser-kit": "5.3.*",
          "symfony/css-selector": "5.3.*",
-@@ -92,7 +93,7 @@
+@@ -94,7 +95,7 @@
      },
      "extra": {
          "symfony": {
@@ -20,19 +20,19 @@ index 87fae32..8d1b4d8 100755
          }
      }
 diff --git a/composer.lock b/composer.lock
-index b214c4b..482ac56 100644
+index b550fed..d589b92 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "476d6e3faaad98e90d063f8b13516d1f",
-+    "content-hash": "5380a4aba98c6f8563c129fb896c3b6b",
+-    "content-hash": "c0ce77b6ebf34d0f80e821c268b0559a",
++    "content-hash": "45ece9a553d34d4fd1f29258a07794aa",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -7651,6 +7651,72 @@
+@@ -7649,6 +7649,72 @@
          }
      ],
      "packages-dev": [
@@ -105,15 +105,6 @@ index b214c4b..482ac56 100644
          {
              "name": "myclabs/deep-copy",
              "version": "1.10.2",
-@@ -9927,7 +9993,7 @@
-     "prefer-stable": true,
-     "prefer-lowest": false,
-     "platform": {
--        "php": ">=7.2.5",
-+        "php": ">=7.4",
-         "ext-ctype": "*",
-         "ext-iconv": "*"
-     },
 diff --git a/config/bundles.php b/config/bundles.php
 index cd98906..f62475d 100644
 --- a/config/bundles.php
