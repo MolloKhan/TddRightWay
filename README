@@ -3,6 +3,7 @@
 ### Project Installation
 After downloading the project's code, run:
 - composer install
+- Set up your database credentials in the `.env.test.local` file
 - php bin/console doctrine:database:create -e test
 - php bin/console doctrine:schema:create -e test
 
