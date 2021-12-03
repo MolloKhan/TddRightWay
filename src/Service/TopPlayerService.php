@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Player;
 use App\Mailer\PlayerMailer;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,16 +26,21 @@ class TopPlayerService
         $secondTopPlayer = $this->playerRepository->findTopPlayerForDay('-2');
         $thirdTopPlayer = $this->playerRepository->findTopPlayerForDay('-3');
 
-        if ($firstTopPlayer && $firstTopPlayer === $secondTopPlayer) {
+        if ($this->arePlayersEquals($firstTopPlayer, $secondTopPlayer)) {
             $firstTopPlayer->addHonorPoints(1);
 
             $this->entityManager->flush();
         }
 
-        if ($secondTopPlayer && $secondTopPlayer === $thirdTopPlayer) {
+        if ($this->arePlayersEquals($secondTopPlayer, $thirdTopPlayer)) {
             $secondTopPlayer->addHonorPoints(1);
 
             $this->entityManager->flush();
         }
+    }
+
+    private function arePlayersEquals(?Player $firstTopPlayer, ?Player $secondTopPlayer): bool
+    {
+        return $firstTopPlayer && $firstTopPlayer === $secondTopPlayer;
     }
 }
