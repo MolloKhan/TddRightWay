@@ -23,9 +23,16 @@ class TopPlayerService
     {
         $firstTopPlayer = $this->playerRepository->findTopPlayerForDay('-1');
         $secondTopPlayer = $this->playerRepository->findTopPlayerForDay('-2');
+        $thirdTopPlayer = $this->playerRepository->findTopPlayerForDay('-3');
 
         if ($firstTopPlayer && $firstTopPlayer === $secondTopPlayer) {
             $firstTopPlayer->addHonorPoints(1);
+
+            $this->entityManager->flush();
+        }
+
+        if ($secondTopPlayer && $secondTopPlayer === $thirdTopPlayer) {
+            $secondTopPlayer->addHonorPoints(1);
 
             $this->entityManager->flush();
         }
