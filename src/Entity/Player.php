@@ -32,6 +32,11 @@ class Player
      */
     private \DateTimeImmutable $registeredAt;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $honorPoints = 0;
+
     public function __construct(string $nickname)
     {
         $this->nickname = $nickname;
@@ -51,5 +56,15 @@ class Player
     public function getRegisteredAt(): \DateTimeImmutable
     {
         return $this->registeredAt;
+    }
+
+    public function addHonorPoints(int $earnedPoints)
+    {
+        $this->honorPoints += $earnedPoints;
+    }
+
+    public function getHonorPoints(): int
+    {
+        return $this->honorPoints;
     }
 }
