@@ -21,7 +21,13 @@ class TopPlayerService
 
     public function reward()
     {
-        // fake it till you make it
-        $topPlayer = $this->playerRepository->findTopPlayerForDay('-1');
+        $firstTopPlayer = $this->playerRepository->findTopPlayerForDay('-1');
+        $secondTopPlayer = $this->playerRepository->findTopPlayerForDay('-2');
+
+        if ($firstTopPlayer && $firstTopPlayer === $secondTopPlayer) {
+            $firstTopPlayer->addHonorPoints(1);
+
+            $this->entityManager->flush();
+        }
     }
 }
