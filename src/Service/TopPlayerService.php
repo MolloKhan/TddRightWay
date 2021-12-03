@@ -37,6 +37,10 @@ class TopPlayerService
 
             $this->entityManager->flush();
         }
+
+        if ($this->arePlayersEquals($firstTopPlayer, $secondTopPlayer) && $this->arePlayersEquals($secondTopPlayer, $thirdTopPlayer)) {
+            $this->playerMailerService->sendTopPlayerEmail($firstTopPlayer);
+        }
     }
 
     private function arePlayersEquals(?Player $firstTopPlayer, ?Player $secondTopPlayer): bool

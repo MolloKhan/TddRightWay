@@ -89,6 +89,29 @@ class TopPlayerServiceTest extends TestCase
         self::assertEquals(1, $topPlayer->getHonorPoints());
     }
 
+    public function testReward_topPlayerFor3DaysInRow()
+    {
+        $topPlayer = new Player('player 1');
+        $this->playerRepositoryMock->expects($this->atLeastOnce())
+            ->method('findTopPlayerForDay')
+            ->willReturnMap([
+                ['-1', $topPlayer],
+                ['-2', $topPlayer],
+                ['-3', $topPlayer]
+            ]);
+
+        $this->playerMailerServiceMock->expects($this->atLeastOnce())
+            ->method('sendTopPlayerEmail')
+            ->with($topPlayer);
+
+        $this->entityManagerMock->expects($this->atLeastOnce())
+            ->method('flush');
+
+        $this->reward();
+
+        self::assertEquals(2, $topPlayer->getHonorPoints());
+    }
+    
     private function reward(): void
     {
         $topPlayerService = new TopPlayerService($this->playerRepositoryMock, $this->playerMailerServiceMock, $this->entityManagerMock);
