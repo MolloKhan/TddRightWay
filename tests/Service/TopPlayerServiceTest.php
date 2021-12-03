@@ -2,6 +2,7 @@
 
 namespace App\Tests\Service;
 
+use App\Entity\Player;
 use App\Mailer\PlayerMailer;
 use App\Repository\PlayerRepository;
 use App\Service\TopPlayerService;
@@ -36,6 +37,24 @@ class TopPlayerServiceTest extends TestCase
     {
         $this->playerRepositoryMock->expects($this->atLeastOnce())
             ->method('findTopPlayerForDay');
+
+        $this->playerMailerServiceMock->expects($this->never())
+            ->method('sendTopPlayerEmail');
+
+        $this->entityManagerMock->expects($this->never())
+            ->method('flush');
+
+        $this->reward();
+    }
+
+    public function testReward_oneTopPlayer()
+    {
+        $topPlayer = new Player('player 1');
+        $this->playerRepositoryMock->expects($this->atLeastOnce())
+            ->method('findTopPlayerForDay')
+            ->willReturnMap([
+                '-1', $topPlayer
+            ]);
 
         $this->playerMailerServiceMock->expects($this->never())
             ->method('sendTopPlayerEmail');
