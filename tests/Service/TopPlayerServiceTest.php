@@ -21,4 +21,23 @@ class TopPlayerServiceTest extends TestCase
 
         self::assertTrue(true);
     }
+
+    public function testReward_zeroTopPlayersFound()
+    {
+        $playerRepositoryMock = $this->createMock(PlayerRepository::class);
+        $playerMailerServiceMock = $this->createMock(PlayerMailer::class);
+        $entityManagerMock = $this->createMock(EntityManagerInterface::class);
+
+        $playerRepositoryMock->expects($this->atLeastOnce())
+            ->method('findTopPlayerForDay');
+
+        $playerMailerServiceMock->expects($this->never())
+            ->method('sendTopPlayerEmail');
+
+        $entityManagerMock->expects($this->never())
+            ->method('flush');
+
+        $topPlayerService = new TopPlayerService($playerRepositoryMock, $playerMailerServiceMock, $entityManagerMock);
+        $topPlayerService->reward();
+    }
 }

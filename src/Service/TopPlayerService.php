@@ -18,4 +18,10 @@ class TopPlayerService
         $this->playerMailerService = $playerMailerService;
         $this->entityManager = $entityManager;
     }
+
+    public function reward()
+    {
+        // fake it till you make it
+        $topPlayer = $this->playerRepository->findTopPlayerForDay('-1');
+    }
 }

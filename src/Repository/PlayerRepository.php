@@ -33,4 +33,10 @@ class PlayerRepository extends ServiceEntityRepository
             ->getQuery()
             ->execute();
     }
+
+    public function findTopPlayerForDay(string $days): ?Player
+    {
+        // todo: Implement me
+        return null;
+    }
 }
