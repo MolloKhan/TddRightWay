@@ -1,0 +1,58 @@
+diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
+index a5e545d..ce1d4b5 100644
+--- a/src/Repository/PlayerRepository.php
++++ b/src/Repository/PlayerRepository.php
+@@ -33,4 +33,10 @@ class PlayerRepository extends ServiceEntityRepository
+             ->getQuery()
+             ->execute();
+     }
++
++    public function findTopPlayerForDay(string $days): ?Player
++    {
++        // todo: Implement me
++        return null;
++    }
+ }
+diff --git a/src/Service/TopPlayerService.php b/src/Service/TopPlayerService.php
+index dbaa67b..7852aa4 100644
+--- a/src/Service/TopPlayerService.php
++++ b/src/Service/TopPlayerService.php
+@@ -18,4 +18,10 @@ class TopPlayerService
+         $this->playerMailerService = $playerMailerService;
+         $this->entityManager = $entityManager;
+     }
++
++    public function reward()
++    {
++        // fake it till you make it
++        $topPlayer = $this->playerRepository->findTopPlayerForDay('-1');
++    }
+ }
+diff --git a/tests/Service/TopPlayerServiceTest.php b/tests/Service/TopPlayerServiceTest.php
+index c0127e3..53fb2bc 100644
+--- a/tests/Service/TopPlayerServiceTest.php
++++ b/tests/Service/TopPlayerServiceTest.php
+@@ -21,4 +21,23 @@ class TopPlayerServiceTest extends TestCase
+ 
+         self::assertTrue(true);
+     }
++
++    public function testReward_zeroTopPlayersFound()
++    {
++        $playerRepositoryMock = $this->createMock(PlayerRepository::class);
++        $playerMailerServiceMock = $this->createMock(PlayerMailer::class);
++        $entityManagerMock = $this->createMock(EntityManagerInterface::class);
++
++        $playerRepositoryMock->expects($this->atLeastOnce())
++            ->method('findTopPlayerForDay');
++
++        $playerMailerServiceMock->expects($this->never())
++            ->method('sendTopPlayerEmail');
++
++        $entityManagerMock->expects($this->never())
++            ->method('flush');
++
++        $topPlayerService = new TopPlayerService($playerRepositoryMock, $playerMailerServiceMock, $entityManagerMock);
++        $topPlayerService->reward();
++    }
+ }
