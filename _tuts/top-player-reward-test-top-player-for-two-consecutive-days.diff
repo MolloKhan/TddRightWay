@@ -1,0 +1,60 @@
+diff --git a/src/Service/TopPlayerService.php b/src/Service/TopPlayerService.php
+index 7852aa4..a434f9e 100644
+--- a/src/Service/TopPlayerService.php
++++ b/src/Service/TopPlayerService.php
+@@ -21,7 +21,13 @@ class TopPlayerService
+ 
+     public function reward()
+     {
+-        // fake it till you make it
+-        $topPlayer = $this->playerRepository->findTopPlayerForDay('-1');
++        $firstTopPlayer = $this->playerRepository->findTopPlayerForDay('-1');
++        $secondTopPlayer = $this->playerRepository->findTopPlayerForDay('-2');
++
++        if ($firstTopPlayer && $firstTopPlayer === $secondTopPlayer) {
++            $firstTopPlayer->addHonorPoints(1);
++
++            $this->entityManager->flush();
++        }
+     }
+ }
+diff --git a/tests/Service/TopPlayerServiceTest.php b/tests/Service/TopPlayerServiceTest.php
+index 8ed354e..d5e64ec 100644
+--- a/tests/Service/TopPlayerServiceTest.php
++++ b/tests/Service/TopPlayerServiceTest.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Tests\Service;
+ 
++use App\Entity\Player;
+ use App\Mailer\PlayerMailer;
+ use App\Repository\PlayerRepository;
+ use App\Service\TopPlayerService;
+@@ -46,6 +47,27 @@ class TopPlayerServiceTest extends TestCase
+         $this->reward();
+     }
+ 
++    public function testReward_topPlayerForTwoConsecutiveDays()
++    {
++        $topPlayer = new Player('player 1');
++        $this->playerRepositoryMock->expects($this->atLeastOnce())
++            ->method('findTopPlayerForDay')
++            ->willReturnMap([
++                ['-1', $topPlayer],
++                ['-2', $topPlayer]
++            ]);
++
++        $this->playerMailerServiceMock->expects($this->never())
++            ->method('sendTopPlayerEmail');
++
++        $this->entityManagerMock->expects($this->once())
++            ->method('flush');
++
++        $this->reward();
++
++        self::assertEquals(1, $topPlayer->getHonorPoints());
++    }
++
+     private function reward(): void
+     {
+         $topPlayerService = new TopPlayerService($this->playerRepositoryMock, $this->playerMailerServiceMock, $this->entityManagerMock);
