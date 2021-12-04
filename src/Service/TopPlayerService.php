@@ -10,13 +10,13 @@ use Doctrine\ORM\EntityManagerInterface;
 class TopPlayerService
 {
     private PlayerRepository $playerRepository;
-    private PlayerMailer $playerMailerService;
+    private PlayerMailer $playerMailer;
     private EntityManagerInterface $entityManager;
 
-    public function __construct(PlayerRepository $playerRepository, PlayerMailer $playerMailerService, EntityManagerInterface $entityManager)
+    public function __construct(PlayerRepository $playerRepository, PlayerMailer $playerMailer, EntityManagerInterface $entityManager)
     {
         $this->playerRepository = $playerRepository;
-        $this->playerMailerService = $playerMailerService;
+        $this->playerMailer = $playerMailer;
         $this->entityManager = $entityManager;
     }
 
@@ -39,7 +39,7 @@ class TopPlayerService
         }
 
         if ($this->arePlayersEquals($firstTopPlayer, $secondTopPlayer) && $this->arePlayersEquals($secondTopPlayer, $thirdTopPlayer)) {
-            $this->playerMailerService->sendTopPlayerEmail($firstTopPlayer);
+            $this->playerMailer->sendTopPlayerEmail($firstTopPlayer);
         }
     }
 

@@ -5,8 +5,8 @@ namespace App\Tests\Repository;
 use App\Entity\GameResult;
 use App\Entity\Player;
 use App\Repository\PlayerRepository;
+use App\Tests\WebTestCase;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PlayerRepositoryTest extends WebTestCase
 {
@@ -60,37 +60,6 @@ class PlayerRepositoryTest extends WebTestCase
         $this->assertPositionAndScore($p1, 3, 1, $scoreboard);
         $this->assertPositionAndScore($p4, 4, 1, $scoreboard);
         $this->assertPositionAndScore($p5, 5, 1, $scoreboard);
-    }
-    
-    private function getEntityManager(): EntityManagerInterface
-    {
-        return self::getContainer()->get(EntityManagerInterface::class);
-    }
-
-    private function createPlayer(string $nickname): Player
-    {
-        $player = new Player($nickname);
-        $this->getEntityManager()->persist($player);
-
-        return $player;
-    }
-
-    private function createGameResult(Player $player, bool $victory): GameResult
-    {
-        $gameResult = new GameResult($player, $victory);
-        $this->getEntityManager()->persist($gameResult);
-
-        return $gameResult;
-    }
-
-    private function createPlayerWithVictories(string $nickname, int $quantity = 1): Player
-    {
-        $player = $this->createPlayer($nickname);
-        for ($i = 0; $i < $quantity; $i++) {
-            $this->createGameResult($player, true);
-        }
-
-        return $player;
     }
 
     private function assertPositionAndScore(Player $p2, int $position, int $score, $scoreboard): void

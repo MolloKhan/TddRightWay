@@ -4,12 +4,13 @@ namespace App\Tests\Service;
 
 use App\Entity\Player;
 use App\Mailer\PlayerMailer;
+use App\Mailer\PlayerMailerDebugDecorator;
 use App\Repository\PlayerRepository;
 use App\Service\TopPlayerService;
+use App\Tests\WebTestCase;
 use Doctrine\ORM\EntityManagerInterface;
-use PHPUnit\Framework\TestCase;
 
-class TopPlayerServiceTest extends TestCase
+class TopPlayerServiceTest extends WebTestCase
 {
     /**
      * @var PlayerRepository|\PHPUnit\Framework\MockObject\MockObject
@@ -111,7 +112,33 @@ class TopPlayerServiceTest extends TestCase
 
         self::assertEquals(2, $topPlayer->getHonorPoints());
     }
-    
+
+    public function testIntegration()
+    {
+        self::bootKernel();
+
+        $topPlayer = $this->createPlayer('Player 1');
+        $threeDaysAgoVictory = $this->createGameResult($topPlayer, true);
+        $threeDaysAgoVictory->setCreatedAt(new \DateTimeImmutable('-3 days'));
+
+        $twoDaysAgoVictory = $this->createGameResult($topPlayer, true);
+        $twoDaysAgoVictory->setCreatedAt(new \DateTimeImmutable('-2 days'));
+
+        $oneDaysAgoVictory = $this->createGameResult($topPlayer, true);
+        $oneDaysAgoVictory->setCreatedAt(new \DateTimeImmutable('-1 days'));
+
+        $this->getEntityManager()->flush();
+
+        $topPlayerService = self::getContainer()->get(TopPlayerService::class);
+        $topPlayerService->reward();
+
+        self::assertEquals(2, $topPlayer->getHonorPoints());
+
+        /** @var PlayerMailerDebugDecorator $playerMailer */
+        $playerMailer = self::getContainer()->get(PlayerMailer::class);
+        self::assertEquals(1, $playerMailer->getSentEmails());
+    }
+
     private function reward(): void
     {
         $topPlayerService = new TopPlayerService($this->playerRepositoryMock, $this->playerMailerServiceMock, $this->entityManagerMock);
