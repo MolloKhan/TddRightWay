@@ -1,0 +1,57 @@
+diff --git a/src/Service/TopPlayerService.php b/src/Service/TopPlayerService.php
+new file mode 100644
+index 0000000..dbaa67b
+--- /dev/null
++++ b/src/Service/TopPlayerService.php
+@@ -0,0 +1,21 @@
++<?php
++
++namespace App\Service;
++
++use App\Mailer\PlayerMailer;
++use App\Repository\PlayerRepository;
++use Doctrine\ORM\EntityManagerInterface;
++
++class TopPlayerService
++{
++    private PlayerRepository $playerRepository;
++    private PlayerMailer $playerMailerService;
++    private EntityManagerInterface $entityManager;
++
++    public function __construct(PlayerRepository $playerRepository, PlayerMailer $playerMailerService, EntityManagerInterface $entityManager)
++    {
++        $this->playerRepository = $playerRepository;
++        $this->playerMailerService = $playerMailerService;
++        $this->entityManager = $entityManager;
++    }
++}
+diff --git a/tests/Service/TopPlayerServiceTest.php b/tests/Service/TopPlayerServiceTest.php
+new file mode 100644
+index 0000000..c0127e3
+--- /dev/null
++++ b/tests/Service/TopPlayerServiceTest.php
+@@ -0,0 +1,24 @@
++<?php
++
++namespace App\Tests\Service;
++
++use App\Mailer\PlayerMailer;
++use App\Repository\PlayerRepository;
++use App\Service\TopPlayerService;
++use Doctrine\ORM\EntityManagerInterface;
++use PHPUnit\Framework\TestCase;
++
++class TopPlayerServiceTest extends TestCase
++{
++    public function testSetup()
++    {
++        // Dummy "Test Double"
++        $playerRepositoryMock = $this->createMock(PlayerRepository::class);
++        $playerMailerServiceMock = $this->createMock(PlayerMailer::class);
++        $entityManagerMock = $this->createMock(EntityManagerInterface::class);
++
++        $topPlayerService = new TopPlayerService($playerRepositoryMock, $playerMailerServiceMock, $entityManagerMock);
++
++        self::assertTrue(true);
++    }
++}
