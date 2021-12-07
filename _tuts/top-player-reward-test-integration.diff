@@ -34,35 +34,6 @@ index 811231d..69f561f 100644
      {
          return $this->render('homepage.html.twig');
      }
-diff --git a/src/Entity/Player.php b/src/Entity/Player.php
-index 74bbc2b..14c78ea 100644
---- a/src/Entity/Player.php
-+++ b/src/Entity/Player.php
-@@ -3,6 +3,7 @@
- namespace App\Entity;
- 
- use App\Repository\PlayerRepository;
-+use Doctrine\Common\Collections\ArrayCollection;
- use Doctrine\ORM\Mapping as ORM;
- 
- /**
-@@ -20,7 +21,7 @@ class Player
-     /**
-      * @ORM\OneToMany(targetEntity="App\Entity\GameResult", mappedBy="player")
-      */
--    private array $gameResults;
-+    private $gameResults;
- 
-     /**
-      * @ORM\Column(type="string", length=255)
-@@ -41,6 +42,7 @@ class Player
-     {
-         $this->nickname = $nickname;
-         $this->registeredAt = new \DateTimeImmutable();
-+        $this->gameResults = new ArrayCollection();
-     }
- 
-     public function getId(): ?int
 diff --git a/src/Mailer/PlayerMailerDebugDecorator.php b/src/Mailer/PlayerMailerDebugDecorator.php
 new file mode 100644
 index 0000000..24034b5
