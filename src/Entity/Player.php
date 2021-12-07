@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PlayerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,7 +21,7 @@ class Player
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\GameResult", mappedBy="player")
      */
-    private array $gameResults;
+    private $gameResults;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,6 +42,7 @@ class Player
     {
         $this->nickname = $nickname;
         $this->registeredAt = new \DateTimeImmutable();
+        $this->gameResults = new ArrayCollection();
     }
 
     public function getId(): ?int
