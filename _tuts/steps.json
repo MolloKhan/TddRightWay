@@ -271,10 +271,40 @@
             "description": null
         },
         {
-            "id": "pre-top-player-msg",
-            "name": "Pre Top Player Msg",
+            "id": "top-player-reward-test-setup",
+            "name": "Top Player Reward: test setup",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-zero-top-players",
+            "name": "Top Player Reward: test zero top players",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-refactoring-zero-top-players",
+            "name": "Top Player Reward: refactoring-zero-top-players",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-top-player-for-two-consecutive-days",
+            "name": "Top Player Reward: test top player for two consecutive days",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-top-player-for-two-consecutive-days-second-third-days",
+            "name": "Top Player Reward: test top-player-for-two-consecutive-days-second-third-days",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-second-and-third-days-refactoring",
+            "name": "Top Player Reward: test second and third days refactoring",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-integration",
+            "name": "Top Player Reward: test integration",
             "description": null
         }
     ],
-    "sha": "9adf8ffc6e6caf745a7983eb3464741fe4e5d7d3"
+    "sha": "dbdcb8c1c2bcb06ca34a2558a42301b2556dd0f5"
 }
