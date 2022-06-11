@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 5f5e670..b84f4c1 100755
+index 3d8b173..b84f4c1 100755
 --- a/composer.json
 +++ b/composer.json
 @@ -46,6 +46,7 @@
@@ -10,15 +10,6 @@ index 5f5e670..b84f4c1 100755
          "phpunit/phpunit": "^9.5",
          "symfony/browser-kit": "5.3.*",
          "symfony/css-selector": "5.3.*",
-@@ -98,7 +99,7 @@
-     },
-     "extra": {
-         "symfony": {
--            "allow-contrib": false,
-+            "allow-contrib": true,
-             "require": "5.3.*"
-         }
-     }
 diff --git a/composer.lock b/composer.lock
 index 8345721..3df4007 100644
 --- a/composer.lock
