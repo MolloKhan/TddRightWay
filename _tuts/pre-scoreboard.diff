@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 32b58e1..4f95df8 100755
+index 5f5e670..b84f4c1 100755
 --- a/composer.json
 +++ b/composer.json
 @@ -46,6 +46,7 @@
@@ -10,7 +10,7 @@ index 32b58e1..4f95df8 100755
          "phpunit/phpunit": "^9.5",
          "symfony/browser-kit": "5.3.*",
          "symfony/css-selector": "5.3.*",
-@@ -94,7 +95,7 @@
+@@ -98,7 +99,7 @@
      },
      "extra": {
          "symfony": {
@@ -20,7 +20,7 @@ index 32b58e1..4f95df8 100755
          }
      }
 diff --git a/composer.lock b/composer.lock
-index b550fed..d589b92 100644
+index 8345721..3df4007 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -32,7 +32,7 @@ index b550fed..d589b92 100644
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -7649,6 +7649,72 @@
+@@ -7670,6 +7670,72 @@
          }
      ],
      "packages-dev": [
@@ -104,7 +104,7 @@ index b550fed..d589b92 100644
 +        },
          {
              "name": "myclabs/deep-copy",
-             "version": "1.10.2",
+             "version": "1.11.0",
 diff --git a/config/bundles.php b/config/bundles.php
 index cd98906..f62475d 100644
 --- a/config/bundles.php
