@@ -1,67 +1,68 @@
 diff --git a/composer.json b/composer.json
-index 3d8b173..b84f4c1 100755
+index 8fe5da0..03ea8f1 100755
 --- a/composer.json
 +++ b/composer.json
-@@ -46,6 +46,7 @@
-         "twig/twig": "^2.12|^3.0"
-     },
-     "require-dev": {
-+        "dama/doctrine-test-bundle": "^6.7",
-         "phpunit/phpunit": "^9.5",
-         "symfony/browser-kit": "5.3.*",
-         "symfony/css-selector": "5.3.*",
+@@ -10,6 +10,7 @@
+         "ext-ctype": "*",
+         "ext-iconv": "*",
+         "composer/package-versions-deprecated": "1.11.99.4",
++        "dama/doctrine-test-bundle": "^7.1",
+         "doctrine/annotations": "^1.0",
+         "doctrine/doctrine-bundle": "^2.4",
+         "doctrine/doctrine-migrations-bundle": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index 8345721..3df4007 100644
+index 7ff8841..65dc6f3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "c0ce77b6ebf34d0f80e821c268b0559a",
-+    "content-hash": "45ece9a553d34d4fd1f29258a07794aa",
+-    "content-hash": "3ba5240707960b5d4ed1ef5adfb76ba4",
++    "content-hash": "e75cf23706b64ea53e7e24e9e9f7de26",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -7670,6 +7670,72 @@
-         }
-     ],
-     "packages-dev": [
+@@ -79,6 +79,73 @@
+             ],
+             "time": "2021-09-13T08:41:34+00:00"
+         },
 +        {
 +            "name": "dama/doctrine-test-bundle",
-+            "version": "v6.7.1",
++            "version": "v7.1.0",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/dmaicher/doctrine-test-bundle.git",
-+                "reference": "2ccf6653ce9c7bf46ae53b2e5bbbb60417d9e3e1"
++                "reference": "1cf583f0557e0c73465cece646656bc3a0d7dd9e"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/dmaicher/doctrine-test-bundle/zipball/2ccf6653ce9c7bf46ae53b2e5bbbb60417d9e3e1",
-+                "reference": "2ccf6653ce9c7bf46ae53b2e5bbbb60417d9e3e1",
++                "url": "https://api.github.com/repos/dmaicher/doctrine-test-bundle/zipball/1cf583f0557e0c73465cece646656bc3a0d7dd9e",
++                "reference": "1cf583f0557e0c73465cece646656bc3a0d7dd9e",
 +                "shasum": ""
 +            },
 +            "require": {
-+                "doctrine/dbal": "^2.9.3 || ^3.0",
-+                "doctrine/doctrine-bundle": "^1.11 || ^2.0",
-+                "php": "^7.1 || ^8.0",
++                "doctrine/dbal": "^3.3",
++                "doctrine/doctrine-bundle": "^2.2.2",
++                "ext-json": "*",
++                "php": "^7.3 || ^8.0",
 +                "psr/cache": "^1.0 || ^2.0 || ^3.0",
-+                "symfony/cache": "^4.4 || ^5.3 || ^6.0",
-+                "symfony/framework-bundle": "^4.4 || ^5.3 || ^6.0"
++                "symfony/cache": "^4.4 || ^5.4 || ^6.0",
++                "symfony/framework-bundle": "^4.4 || ^5.4 || ^6.0"
 +            },
 +            "require-dev": {
 +                "behat/behat": "^3.0",
 +                "doctrine/cache": "^1.12",
-+                "phpstan/phpstan": "^0.12.85",
-+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
-+                "symfony/phpunit-bridge": "^5.3 || ^6.0",
-+                "symfony/process": "^4.4 || ^5.3 || ^6.0",
-+                "symfony/yaml": "^4.4 || ^5.3 || ^6.0"
++                "phpstan/phpstan": "^1.2",
++                "phpunit/phpunit": "^8.0 || ^9.0",
++                "symfony/phpunit-bridge": "^6.0",
++                "symfony/process": "^4.4 || ^5.4 || ^6.0",
++                "symfony/yaml": "^4.4 || ^5.4 || ^6.0"
 +            },
 +            "type": "symfony-bundle",
 +            "extra": {
 +                "branch-alias": {
-+                    "dev-master": "6.x-dev"
++                    "dev-master": "7.x-dev"
 +                }
 +            },
 +            "autoload": {
@@ -89,13 +90,13 @@ index 8345721..3df4007 100644
 +            ],
 +            "support": {
 +                "issues": "https://github.com/dmaicher/doctrine-test-bundle/issues",
-+                "source": "https://github.com/dmaicher/doctrine-test-bundle/tree/v6.7.1"
++                "source": "https://github.com/dmaicher/doctrine-test-bundle/tree/v7.1.0"
 +            },
-+            "time": "2021-11-09T11:55:09+00:00"
++            "time": "2022-06-01T09:16:12+00:00"
 +        },
          {
-             "name": "myclabs/deep-copy",
-             "version": "1.11.0",
+             "name": "doctrine/annotations",
+             "version": "1.13.2",
 diff --git a/config/bundles.php b/config/bundles.php
 index cd98906..f62475d 100644
 --- a/config/bundles.php
@@ -132,7 +133,7 @@ index af3f147..2162e93 100644
      <!--
      <extensions>
 diff --git a/symfony.lock b/symfony.lock
-index 1cbd20b..4b5dce3 100644
+index 1cbd20b..a8e6694 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -2,6 +2,18 @@
@@ -140,10 +141,10 @@ index 1cbd20b..4b5dce3 100644
          "version": "1.11.99.4"
      },
 +    "dama/doctrine-test-bundle": {
-+        "version": "6.7",
++        "version": "7.1",
 +        "recipe": {
 +            "repo": "github.com/symfony/recipes-contrib",
-+            "branch": "master",
++            "branch": "main",
 +            "version": "4.0",
 +            "ref": "56eaa387b5e48ebcc7c95a893b47dfa1ad51449c"
 +        },
