@@ -62,34 +62,6 @@ index 0000000..24034b5
 +        return $this->sentEmails;
 +    }
 +}
-diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
-index ce1d4b5..8115020 100644
---- a/src/Repository/PlayerRepository.php
-+++ b/src/Repository/PlayerRepository.php
-@@ -36,7 +36,21 @@ class PlayerRepository extends ServiceEntityRepository
- 
-     public function findTopPlayerForDay(string $days): ?Player
-     {
--        // todo: Implement me
--        return null;
-+        $dayStart = new \DateTime(sprintf('%s days', $days));
-+        $dayStart->setTime(0, 0, 0);
-+        $dayEnd = new \DateTime(sprintf('%s days', $days));
-+        $dayEnd->setTime(23, 59, 59);
-+
-+        return $this->createQueryBuilder('p')
-+            ->addGroupBy('p')
-+            ->join('p.gameResults', 'gr')
-+            ->andWhere('gr.victory = 1')
-+            ->andWhere('gr.createdAt >= :dayStart AND gr.createdAt <= :dayEnd')
-+            ->setParameter('dayStart', $dayStart)
-+            ->setParameter('dayEnd', $dayEnd)
-+            ->setMaxResults(1)
-+            ->orderBy('COUNT(gr.victory)', 'DESC')
-+            ->getQuery()
-+            ->getOneOrNullResult();
-     }
- }
 diff --git a/src/Service/TopPlayerService.php b/src/Service/TopPlayerService.php
 index 526efeb..161280a 100644
 --- a/src/Service/TopPlayerService.php

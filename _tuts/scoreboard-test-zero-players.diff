@@ -1,17 +1,19 @@
 diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
-index 4beda01..a2296be 100644
+index 657c648..9cc5bfb 100644
 --- a/src/Repository/PlayerRepository.php
 +++ b/src/Repository/PlayerRepository.php
-@@ -18,4 +18,9 @@ class PlayerRepository extends ServiceEntityRepository
-     {
+@@ -19,6 +19,11 @@ class PlayerRepository extends ServiceEntityRepository
          parent::__construct($registry, Player::class);
      }
-+
+ 
 +    public function getScoreboard(): array
 +    {
 +        return [];
 +    }
- }
++
+     public function findTopPlayerForDay(string $days): ?Player
+     {
+         $dayStart = new \DateTime(sprintf('%s days', $days));
 diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
 index 45c7c8c..cf1f802 100644
 --- a/tests/Repository/PlayerRepositoryTest.php

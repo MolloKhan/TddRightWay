@@ -1,18 +1,3 @@
-diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
-index a5e545d..ce1d4b5 100644
---- a/src/Repository/PlayerRepository.php
-+++ b/src/Repository/PlayerRepository.php
-@@ -33,4 +33,10 @@ class PlayerRepository extends ServiceEntityRepository
-             ->getQuery()
-             ->execute();
-     }
-+
-+    public function findTopPlayerForDay(string $days): ?Player
-+    {
-+        // todo: Implement me
-+        return null;
-+    }
- }
 diff --git a/src/Service/TopPlayerService.php b/src/Service/TopPlayerService.php
 index dbaa67b..7852aa4 100644
 --- a/src/Service/TopPlayerService.php

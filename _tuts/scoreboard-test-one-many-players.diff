@@ -1,8 +1,8 @@
 diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
-index a2296be..827281c 100644
+index 9cc5bfb..3149cae 100644
 --- a/src/Repository/PlayerRepository.php
 +++ b/src/Repository/PlayerRepository.php
-@@ -21,6 +21,8 @@ class PlayerRepository extends ServiceEntityRepository
+@@ -21,7 +21,9 @@ class PlayerRepository extends ServiceEntityRepository
  
      public function getScoreboard(): array
      {
@@ -11,7 +11,8 @@ index a2296be..827281c 100644
 +            ->getQuery()
 +            ->execute();
      }
- }
+ 
+     public function findTopPlayerForDay(string $days): ?Player
 diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
 index cf1f802..5efae14 100644
 --- a/tests/Repository/PlayerRepositoryTest.php
