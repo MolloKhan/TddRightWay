@@ -35,7 +35,7 @@
     </listeners>
 
     <extensions>
-        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
     </extensions>
 
     <!-- Run `composer require symfony/panther` before enabling this extension -->
