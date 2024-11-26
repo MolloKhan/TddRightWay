@@ -6,36 +6,22 @@ use App\Repository\PlayerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=PlayerRepository::class)
- */
+#[ORM\Entity(repositoryClass: PlayerRepository::class)]
 class Player
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     private ?int $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\GameResult", mappedBy="player")
-     */
+    #[ORM\OneToMany(mappedBy: 'player', targetEntity: GameResult::class)]
     private $gameResults;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private string $nickname;
 
-    /**
-     * @ORM\Column(type="datetime_immutable")
-     */
+    #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $registeredAt;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column]
     private int $honorPoints = 0;
 
     public function __construct(string $nickname)

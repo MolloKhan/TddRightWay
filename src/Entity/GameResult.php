@@ -5,32 +5,20 @@ namespace App\Entity;
 use App\Repository\GameResultRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=GameResultRepository::class)
- */
+#[ORM\Entity(repositoryClass: GameResultRepository::class)]
 class GameResult
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     private ?int $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Player::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: Player::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private Player $player;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column]
     private bool $victory;
 
-    /**
-     * @ORM\Column(type="datetime_immutable")
-     */
+    #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $createdAt;
 
     public function __construct(Player $player, bool $victory)
