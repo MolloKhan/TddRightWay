@@ -9,7 +9,6 @@
         "php": ">=8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "composer/package-versions-deprecated": "1.11.99.4",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -28,16 +27,10 @@
         "symfony/property-access": "7.1.*",
         "symfony/property-info": "7.1.*",
         "symfony/runtime": "7.1.*",
-        "symfony/security-bundle": "7.1.*",
         "symfony/serializer": "7.1.*",
         "symfony/string": "7.1.*",
         "symfony/translation": "7.1.*",
-        "symfony/twig-bundle": "7.1.*",
-        "symfony/validator": "7.1.*",
-        "symfony/web-link": "7.1.*",
-        "symfony/yaml": "7.1.*",
-        "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "symfony/yaml": "7.1.*"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.0",
