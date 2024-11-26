@@ -1,8 +1,8 @@
 diff --git a/src/Entity/GameResult.php b/src/Entity/GameResult.php
-index 8270314..4fdd096 100644
+index c6adead..627df5b 100644
 --- a/src/Entity/GameResult.php
 +++ b/src/Entity/GameResult.php
-@@ -59,4 +59,12 @@ class GameResult
+@@ -47,4 +47,12 @@ class GameResult
      {
          return $this->createdAt;
      }

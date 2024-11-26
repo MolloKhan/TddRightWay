@@ -14,21 +14,21 @@ index 0000000..f295d44
 +        decorates: App\Mailer\PlayerMailer
 \ No newline at end of file
 diff --git a/src/Controller/DefaultController.php b/src/Controller/DefaultController.php
-index 811231d..69f561f 100644
+index 5872323..73e99b8 100644
 --- a/src/Controller/DefaultController.php
 +++ b/src/Controller/DefaultController.php
-@@ -5,6 +5,7 @@ namespace App\Controller;
- use App\Mailer\PlayerMailer;
- use App\Repository\PlayerRepository;
- use App\Service\PlayerNotifier;
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Controller;
+ 
 +use App\Service\TopPlayerService;
  use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  use Symfony\Component\HttpFoundation\Response;
- use Symfony\Component\Routing\Annotation\Route;
-@@ -14,7 +15,7 @@ class DefaultController extends AbstractController
-     /**
-      * @Route("/", name="homepage")
-      */
+ use Symfony\Component\Routing\Attribute\Route;
+@@ -9,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
+ class DefaultController extends AbstractController
+ {
+     #[Route('/', name: 'homepage')]
 -    public function homepage(): Response
 +    public function homepage(TopPlayerService $topPlayerService): Response
      {
