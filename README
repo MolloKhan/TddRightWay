@@ -8,7 +8,7 @@ After downloading the project's code, run:
 - php bin/console doctrine:schema:create -e test
 
 ### Workshop Requirements
-- PHP 8.1 or greater
+- PHP 8.3 or greater
 - Environment ready to run a traditional Symfony app
 - Any database compatible with Doctrine
 
