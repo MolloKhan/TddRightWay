@@ -1,0 +1,26 @@
+diff --git a/src/NameInverter.php b/src/NameInverter.php
+index 458e1b6..6bc7657 100644
+--- a/src/NameInverter.php
++++ b/src/NameInverter.php
+@@ -25,6 +25,6 @@ class NameInverter
+ 
+     private function isHonorific(string $word): bool
+     {
+-        return $word === 'Mr.';
++        return preg_match('/mr|mrs|ms/', str_replace('.', '', strtolower($word)));
+     }
+ }
+diff --git a/tests/NameInverterTest.php b/tests/NameInverterTest.php
+index 0c9f39f..fa8833c 100644
+--- a/tests/NameInverterTest.php
++++ b/tests/NameInverterTest.php
+@@ -49,6 +49,9 @@ class NameInverterTest extends TestCase
+     public function testInvert_ignoreHonorifics()
+     {
+         $this->assertInvertedName('Mr. Diego Aguiar', 'Aguiar, Diego');
++        $this->assertInvertedName('Mrs. Diego Aguiar', 'Aguiar, Diego');
++        $this->assertInvertedName('Ms. Diego Aguiar', 'Aguiar, Diego');
++        $this->assertInvertedName('mr Diego Aguiar', 'Aguiar, Diego');
+     }
+ 
+     private function assertInvertedName(string $name, string $invertedName): void

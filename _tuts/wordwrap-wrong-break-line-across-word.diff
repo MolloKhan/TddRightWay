@@ -1,0 +1,17 @@
+diff --git a/tests/WordWrapperTest.php b/tests/WordWrapperTest.php
+index 5971b93..da27e1d 100644
+--- a/tests/WordWrapperTest.php
++++ b/tests/WordWrapperTest.php
+@@ -22,4 +22,12 @@ class WordWrapperTest extends TestCase
+ 
+         self::assertEquals("a word", $result);
+     }
++
++    public function testBreakLineAcrossWord()
++    {
++        $wordWrapper = new WordWrapper();
++        $result = $wordWrapper->wrap('this is a test', 4);
++
++        self::assertEquals("this\nis a\ntest", $result);
++    }
+ }

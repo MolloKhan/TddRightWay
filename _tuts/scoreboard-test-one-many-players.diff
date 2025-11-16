@@ -1,0 +1,54 @@
+diff --git a/src/Repository/PlayerRepository.php b/src/Repository/PlayerRepository.php
+index 9cc5bfb..3149cae 100644
+--- a/src/Repository/PlayerRepository.php
++++ b/src/Repository/PlayerRepository.php
+@@ -21,7 +21,9 @@ class PlayerRepository extends ServiceEntityRepository
+ 
+     public function getScoreboard(): array
+     {
+-        return [];
++        return $this->createQueryBuilder('p')
++            ->getQuery()
++            ->execute();
+     }
+ 
+     public function findTopPlayerForDay(string $days): ?Player
+diff --git a/tests/Repository/PlayerRepositoryTest.php b/tests/Repository/PlayerRepositoryTest.php
+index cf1f802..5efae14 100644
+--- a/tests/Repository/PlayerRepositoryTest.php
++++ b/tests/Repository/PlayerRepositoryTest.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Tests\Repository;
+ 
++use App\Entity\GameResult;
++use App\Entity\Player;
++use Doctrine\ORM\EntityManagerInterface;
+ use App\Repository\PlayerRepository;
+ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+@@ -26,4 +29,24 @@ class PlayerRepositoryTest extends WebTestCase
+ 
+         self::assertEmpty($scoreboard);
+     }
++
++    public function testGetScoreboard_withOnePlayer()
++    {
++        self::bootKernel();
++
++        $player = new Player('player');
++        $gameResult = new GameResult($player, true);
++
++        $em = self::getContainer()->get(EntityManagerInterface::class);
++        $em->persist($player);
++        $em->persist($gameResult);
++        $em->flush();
++
++        /** @var PlayerRepository $repository */
++        $repository = self::getContainer()->get(PlayerRepository::class);
++
++        $scoreboard = $repository->getScoreboard();
++
++        self::assertCount(1, $scoreboard);
++    }
+ }
