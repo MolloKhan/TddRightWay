@@ -11,6 +11,16 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-symfony}
     volumes:
       - db-data:/var/lib/postgresql/data:rw
+
+#    Alternative MariaDB configuration
+#    image: 'mariadb:10.5'
+#    environment:
+#      MYSQL_ROOT_PASSWORD: 'password'
+#    ports:
+#      - '6000:3306'
+#    volumes:
+#      - db-data:/var/lib/mysql
+
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
