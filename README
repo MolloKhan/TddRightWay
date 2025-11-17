@@ -1,11 +1,12 @@
 # TDD The Right Way
 
 ### Project Installation
-After downloading the project's code, run:
+After downloading the project, run:
 - composer install
 - Set up your database credentials in the `.env.test.local` file
-- php bin/console doctrine:database:create -e test
-- php bin/console doctrine:schema:create -e test
+- symfony doctrine:database:create -e test
+- symfony doctrine:schema:create -e test
+- symfony run bin/phpunit (you should see "No tests executed!")
 
 ### Workshop Requirements
 - PHP 8.2 or greater
