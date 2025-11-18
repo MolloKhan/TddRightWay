@@ -1,5 +1,5 @@
 diff --git a/src/Entity/GameResult.php b/src/Entity/GameResult.php
-index c6adead..627df5b 100644
+index 180b22b..28bd1bb 100644
 --- a/src/Entity/GameResult.php
 +++ b/src/Entity/GameResult.php
 @@ -47,4 +47,12 @@ class GameResult

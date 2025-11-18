@@ -4,7 +4,307 @@
             "id": "start",
             "name": "start",
             "description": null
+        },
+        {
+            "id": "nameinverter-start",
+            "name": "NameInverter: start",
+            "description": null
+        },
+        {
+            "id": "nameinverter-simple-name",
+            "name": "NameInverter: simple name",
+            "description": null
+        },
+        {
+            "id": "nameinverter-simple-name-refactoring",
+            "name": "NameInverter: Simple Name Refactoring",
+            "description": null
+        },
+        {
+            "id": "nameinverter-simple-name-with-spaces",
+            "name": "NameInverter: Simple Name With Spaces",
+            "description": null
+        },
+        {
+            "id": "nameinverter-full-name",
+            "name": "NameInverter: Full name",
+            "description": null
+        },
+        {
+            "id": "nameinverter-fullname-with-multiple-spaces",
+            "name": "NameInverter: Fullname with multiple spaces",
+            "description": null
+        },
+        {
+            "id": "nameinverter-honorifics",
+            "name": "NameInverter: Honorifics",
+            "description": null
+        },
+        {
+            "id": "nameinverter-refactor-honorifics",
+            "name": "NameInverter: refactor honorifics",
+            "description": null
+        },
+        {
+            "id": "nameinverter-more-honorifics",
+            "name": "NameInverter: more honorifics",
+            "description": null
+        },
+        {
+            "id": "nameinverter-post-nominals",
+            "name": "NameInverter: Post Nominals",
+            "description": null
+        },
+        {
+            "id": "nameinverter-post-nominals-triangulation",
+            "name": "NameInverter: Post Nominals Triangulation",
+            "description": null
+        },
+        {
+            "id": "nameinverter-integration-test",
+            "name": "NameInverter: integration test",
+            "description": null
+        },
+        {
+            "id": "nameinverter-data-providers",
+            "name": "NameInverter: data providers",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-start",
+            "name": "BowlingKata: Start",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-gutter-gamer-test",
+            "name": "BowlingKata: Gutter Gamer Test",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-all-ones",
+            "name": "BowlingKata: All ones\"",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-all-ones-refactoring",
+            "name": "BowlingKata: All ones refactoring",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-spare-test",
+            "name": "BowlingKata: one spare test",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-spare-refactoring",
+            "name": "BowlingKata: one-spare-refactoring",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-strike",
+            "name": "BowlingKata: One Strike",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-one-strike-refactoring",
+            "name": "BowlingKata: one strike refactoring",
+            "description": null
+        },
+        {
+            "id": "bowlingkata-perfect-game",
+            "name": "BowlingKata: perfect game",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-start",
+            "name": "WordWrap: wrong-start",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-should-wrap",
+            "name": "WordWrap: wrong should wrap",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-should-not-wrap",
+            "name": "WordWrap: wrong should not wrap",
+            "description": null
+        },
+        {
+            "id": "wordwrap-wrong-break-line-across-word",
+            "name": "WordWrap: wrong break line across word",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-reset",
+            "name": "WordWrap: should wrap reset",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-set-up",
+            "name": "WordWrap: should wrap set up",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-basic-tests",
+            "name": "WordWrap: should wrap basic tests",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-break-word",
+            "name": "WordWrap: should wrap break word",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-one-word-multiple-break-lines",
+            "name": "WordWrap-should-wrap-one-word-multiple-break-lines",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-space-after-breakline",
+            "name": "WordWrap: should wrap space after breakline ",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-width-include-space",
+            "name": "WordWrap: should wrap width include space",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-width-includes-a-space-following-by-another-word",
+            "name": "WordWrap: should wrap width includes a space following by another word",
+            "description": null
+        },
+        {
+            "id": "wordwrap-should-wrap-integration",
+            "name": "WordWrap: should wrap integration",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-failure",
+            "name": "WordWrap: performance failure",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-back-up",
+            "name": "WordWrap: performance back up",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-basic-tests",
+            "name": "WordWrap: performance basic tests",
+            "description": null
+        },
+        {
+            "id": "wordwrap-performance-width-includes-space",
+            "name": "WordWrap: performance width includes space",
+            "description": null
+        },
+        {
+            "id": "pre-scoreboard",
+            "name": "Pre Scoreboard",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-setup",
+            "name": "Scoreboard: test setup",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-zero-players",
+            "name": "Scoreboard: test zero players",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-one-many-players",
+            "name": "Scoreboard: test one-many players",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-one-many-players-refactoring",
+            "name": "Scoreboard: test one-many players refactoring",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-many-players",
+            "name": "Scoreboard: test many players",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-many-players-refactoring",
+            "name": "Scoreboard: test many players refactoring",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-limit-5",
+            "name": "Scoreboard: test limit 5",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-date-constraint",
+            "name": "Scoreboard: test date constraint",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-calculate-score",
+            "name": "Scoreboard: test calculate score",
+            "description": null
+        },
+        {
+            "id": "scoreboard-test-ordered-by-score",
+            "name": "Scoreboard: test ordered by score",
+            "description": null
+        },
+        {
+            "id": "scoreboard-calculate-players-score",
+            "name": "Scoreboard: calculate players score",
+            "description": null
+        },
+        {
+            "id": "scoreboard-top5-integration",
+            "name": "Scoreboard: top5 integration",
+            "description": null
+        },
+        {
+            "id": "scoreboard-refactoring-tests",
+            "name": "Scoreboard: refactoring tests",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-setup",
+            "name": "Top Player Reward: test setup",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-zero-top-players",
+            "name": "Top Player Reward: test zero top players",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-refactoring-zero-top-players",
+            "name": "Top Player Reward: refactoring-zero-top-players",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-top-player-for-two-consecutive-days",
+            "name": "Top Player Reward: test top player for two consecutive days",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-top-player-for-two-consecutive-days-second-third-days",
+            "name": "Top Player Reward: test top-player-for-two-consecutive-days-second-third-days",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-second-and-third-days-refactoring",
+            "name": "Top Player Reward: test second and third days refactoring",
+            "description": null
+        },
+        {
+            "id": "top-player-reward-test-integration",
+            "name": "Top Player Reward: test integration",
+            "description": null
         }
     ],
-    "sha": "d02f35232e066381af3426f8a89e620c5708913e"
+    "sha": "8f001e2067b25ca4bdf812b509090417c8883149"
 }
