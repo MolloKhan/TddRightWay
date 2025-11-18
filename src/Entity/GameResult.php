@@ -11,7 +11,7 @@ class GameResult
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     private ?int $id;
 
-    #[ORM\ManyToOne(targetEntity: Player::class)]
+    #[ORM\ManyToOne(targetEntity: Player::class, inversedBy: 'gameResults')]
     #[ORM\JoinColumn(nullable: false)]
     private Player $player;
 
