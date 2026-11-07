@@ -32,7 +32,7 @@ index 5872323..73e99b8 100644
 -    public function homepage(): Response
 +    public function homepage(TopPlayerService $topPlayerService): Response
      {
-         return $this->render('homepage.html.twig');
+         return new Response('<h1>This is the homepage</h1><h3>Nothing to see here...</h3>');
      }
 diff --git a/src/Mailer/PlayerMailerDebugDecorator.php b/src/Mailer/PlayerMailerDebugDecorator.php
 new file mode 100644
