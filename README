@@ -3,13 +3,13 @@
 ### Project Installation
 After downloading the project, run:
 - composer install
-- Set up your database credentials in the `.env.test.local` file
-- symfony doctrine:database:create -e test
-- symfony doctrine:schema:create -e test
+- Set up your database credentials in the `.env.test.local` file in case you're not using Docker
+- symfony console doctrine:database:create -e test
+- symfony console doctrine:schema:create -e test
 - symfony run bin/phpunit (you should see "No tests executed!")
 
 ### Workshop Requirements
-- PHP 8.2 or greater
+- PHP 8.4 or greater
 - Environment ready to run a traditional Symfony app
 - Any database compatible with Doctrine
 
